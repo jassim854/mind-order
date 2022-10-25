@@ -39,7 +39,7 @@ class _cartscreenState extends State<cartscreen> {
                     child: Text(
                       "Cart",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
                   ),
                   Container(
