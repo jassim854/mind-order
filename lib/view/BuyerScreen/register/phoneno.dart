@@ -25,9 +25,9 @@ class _phonenoState extends State<phoneno> {
     var click;
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xffffffff),
+            backgroundColor: const Color(0xffffffff),
             body: Column(children: [
-              Flexible(
+              const Flexible(
                 flex: 3,
                 child: customlogo(
                     textcolor: AppColor.headertextcolor,
@@ -66,17 +66,17 @@ class _phonenoState extends State<phoneno> {
               Flexible(
                 flex: 5,
                 child: Container(
-                  padding: EdgeInsets.only(
+                  padding: const EdgeInsets.only(
                     top: 10,
                   ),
                   alignment: Alignment.center,
-                  child: Image(image: AssetImage(images.messageImageIcon)),
+                  child: const Image(image: AssetImage(images.messageImageIcon)),
                 ),
               ),
               Flexible(
                 flex: 2,
                 child: Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                       left: 15,
                       right: 15,
                     ),
@@ -86,7 +86,7 @@ class _phonenoState extends State<phoneno> {
                       child: customTextfield(
                         textalign: TextAlign.center,
                         hintstyle:
-                            TextStyle(fontSize: 20, color: AppColor.colorgrey),
+                            const TextStyle(fontSize: 20, color: AppColor.colorgrey),
                         obsecuretext: false,
                         keyboardtype: TextInputType.number,
                         validator: (value) {
@@ -109,7 +109,7 @@ class _phonenoState extends State<phoneno> {
                       child: customTextButton(
                         onclick: () {},
                         title: 'Resend Code',
-                        color: AppColor.headertextcolor,
+                        textcolor: AppColor.headertextcolor,
                       )),
                 ),
               ),
@@ -119,19 +119,20 @@ class _phonenoState extends State<phoneno> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: 57,
                         child: customelevatedbutton(
-                          onpress: () {
+                          onpress: () { 
                             if (_formkey.currentState!.validate()) {
                               setState(() {
                                 // _formkey.currentState?.reset();
 
-                                Navigator.pushNamed(
+                                Navigator.pushNamedAndRemoveUntil(
                                     context,
                                     type == 'Buyer'
                                         ? RoutesName.homescreen
-                                        : RoutesName.stepsleft);
+                                        : RoutesName.stepsleft,
+                                    (route) => false);
                               });
                             } else {
                               print("error");

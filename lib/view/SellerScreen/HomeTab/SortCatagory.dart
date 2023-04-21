@@ -12,10 +12,10 @@ class _sortcategoryState extends State<sortcategory> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 130,
             child: Column(
@@ -30,14 +30,12 @@ class _sortcategoryState extends State<sortcategory> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
-                            child: Container(
-                              child: ImageIcon(
-                                AssetImage(
-                                  "assets/accicons/drawericon.png",
-                                ),
-                                size: 37,
+                            padding: const EdgeInsets.only(left: 8, top: 20),
+                            child: const ImageIcon(
+                              AssetImage(
+                                "assets/accicons/drawericon.png",
                               ),
+                              size: 37,
                             ),
                           ));
                     }),
@@ -47,12 +45,12 @@ class _sortcategoryState extends State<sortcategory> {
                         height: 45,
                         width: 45,
                         decoration: BoxDecoration(
-                            color: Color(0xffFC4747),
+                            color: const Color(0xffFC4747),
                             borderRadius: BorderRadius.circular(12)),
                         child: Transform.scale(
                           scale: 0.6,
-                          child: Image(
-                            image: const AssetImage(
+                          child: const Image(
+                            image: AssetImage(
                                 "assets/accicons/sellerlogo.png"),
                           ),
                         ),
@@ -60,7 +58,7 @@ class _sortcategoryState extends State<sortcategory> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -68,27 +66,23 @@ class _sortcategoryState extends State<sortcategory> {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Container(
-                        child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.keyboard_arrow_left,
-                              size: 37,
-                            )),
-                      ),
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.keyboard_arrow_left,
+                            size: 37,
+                          )),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 45),
-                      child: Container(
-                        child: Text(
-                          "Sort Category",
-                          style: TextStyle(
-                              fontSize: 34,
-                              color: Color(0xff40484E),
-                              fontWeight: FontWeight.w600),
-                        ),
+                      child: const Text(
+                        "Sort Category",
+                        style: TextStyle(
+                            fontSize: 34,
+                            color: Color(0xff40484E),
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   ],
@@ -99,19 +93,19 @@ class _sortcategoryState extends State<sortcategory> {
           ListTile(
             leading: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Container(
+              child: SizedBox(
                 height: 45,
                 width: 45,
-                child: ImageIcon(
+                child: const ImageIcon(
                   AssetImage("assets/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
             ),
-            title: Container(
+            title: SizedBox(
                 height: 30,
                 width: 60,
-                child: Text(
+                child: const Text(
                   "Hot Deals",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                 )),
@@ -120,7 +114,7 @@ class _sortcategoryState extends State<sortcategory> {
               child: Container(
                   width: 25,
                   height: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
                           "assets/accicons/trash1.png",
@@ -129,25 +123,25 @@ class _sortcategoryState extends State<sortcategory> {
                   )),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           ListTile(
             leading: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Container(
+              child: SizedBox(
                 height: 45,
                 width: 45,
-                child: ImageIcon(
+                child: const ImageIcon(
                   AssetImage("assets/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
             ),
-            title: Container(
+            title: SizedBox(
                 height: 30,
                 width: 60,
-                child: Text(
+                child: const Text(
                   "Starters",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                 )),
@@ -156,7 +150,7 @@ class _sortcategoryState extends State<sortcategory> {
               child: Container(
                   width: 25,
                   height: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
                           "assets/accicons/trash1.png",
@@ -165,25 +159,25 @@ class _sortcategoryState extends State<sortcategory> {
                   )),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           ListTile(
             leading: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Container(
+              child: SizedBox(
                 height: 45,
                 width: 45,
-                child: ImageIcon(
+                child: const ImageIcon(
                   AssetImage("assets/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
             ),
-            title: Container(
+            title: SizedBox(
                 height: 30,
                 width: 60,
-                child: Text(
+                child: const Text(
                   "Mains",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                 )),
@@ -192,7 +186,7 @@ class _sortcategoryState extends State<sortcategory> {
               child: Container(
                   width: 25,
                   height: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
                           "assets/accicons/trash1.png",
@@ -201,25 +195,25 @@ class _sortcategoryState extends State<sortcategory> {
                   )),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           ListTile(
             leading: Padding(
               padding: const EdgeInsets.only(left: 5),
-              child: Container(
+              child: SizedBox(
                 height: 45,
                 width: 45,
-                child: ImageIcon(
+                child: const ImageIcon(
                   AssetImage("assets/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
             ),
-            title: Container(
+            title: SizedBox(
                 height: 30,
                 width: 60,
-                child: Text(
+                child: const Text(
                   "Dessort",
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                 )),
@@ -228,7 +222,7 @@ class _sortcategoryState extends State<sortcategory> {
               child: Container(
                   width: 25,
                   height: 25,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
                           "assets/accicons/trash1.png",

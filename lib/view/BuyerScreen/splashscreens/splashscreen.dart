@@ -19,7 +19,7 @@ class _splashscreenState extends State<splashscreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 4), () {
       Navigator.pushNamed(context, RoutesName.usertype);
     });
   }
@@ -28,25 +28,24 @@ class _splashscreenState extends State<splashscreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: AppColor.colorblack,
+      backgroundColor: AppColor.splashbackgroundcolor,
       body: Center(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
+          SizedBox(
               width: 280,
-              child: Image(
-                image: AssetImage(images.logo),
+              child: const Image(
+                image: AssetImage(images.mindlogo),
                 fit: BoxFit.fill,
               )),
-          Container(
-              child: customText(
+          customText(
             text: "MIND ORDER",
             size: 23,
             weight: FontWeight.w500,
             textColor: AppColor.colorwhite,
-          ))
+          )
         ],
       )),
     ));

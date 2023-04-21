@@ -22,115 +22,113 @@ class _usertypeState extends State<usertype> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: AppColor.scaffoldcolor,
-      body: Container(
-        child: Column(
-          children: [
-            Flexible(
+      body: Column(
+        children: [
+          const Flexible(
+              flex: 2,
+              child: customlogo(
+                  textcolor: AppColor.headertextcolor, splashscreen: false)),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: SizedBox(
+                  height: 40,
+                  width: double.infinity,
+                  child: FittedBox(
+                    child: customText(
+                      text: "Select User Type",
+                      textColor: AppColor.colorred,
+                      weight: FontWeight.w600,
+                    ),
+                  )),
+            ),
+          ),
+          SizedBox(
+            width: 45,
+            child: const Divider(
+              color: AppColor.colorred,
+              thickness: 7,
+              // endIndent: 180,
+              // indent: 185,
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
                 flex: 2,
-                child: customlogo(
-                    textcolor: AppColor.headertextcolor, splashscreen: false)),
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                    height: 40,
-                    width: double.infinity,
-                    child: FittedBox(
-                      child: customText(
-                        text: "Select User Type",
-                        textColor: AppColor.colorred,
-                        weight: FontWeight.w600,
-                      ),
-                    )),
-              ),
-            ),
-            Container(
-              width: 45,
-              child: Divider(
-                color: AppColor.colorred,
-                thickness: 7,
-                // endIndent: 180,
-                // indent: 185,
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30, right: 90, left: 90),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          type = 'Buyer';
-                        });
-                      },
-                      child: usertypecontainer(
-                          borderColor: type == 'Buyer'
-                              ? AppColor.colorred
-                              : AppColor.colorwhite,
-                          img: images.buyertypeimg,
-                          typetext: "Buyer"),
-                    ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 30, right: 90, left: 90),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        type = 'Buyer';
+                      });
+                    },
+                    child: usertypecontainer(
+                        borderColor: type == 'Buyer'
+                            ? AppColor.colorred
+                            : AppColor.colorwhite,
+                        img: images.buyertypeimg,
+                        typetext: "Buyer"),
                   ),
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 30, right: 90, left: 90),
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          type = 'Seller';
-                        });
-                      },
-                      child: usertypecontainer(
-                          borderColor: type == 'Seller'
-                              ? AppColor.colorred
-                              : AppColor.colorwhite,
-                          img: images.sellertypeimg,
-                          typetext: "Seller"),
-                    ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(top: 30, right: 90, left: 90),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        type = 'Seller';
+                      });
+                    },
+                    child: usertypecontainer(
+                        borderColor: type == 'Seller'
+                            ? AppColor.colorred
+                            : AppColor.colorwhite,
+                        img: images.sellertypeimg,
+                        typetext: "Seller"),
                   ),
                 ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 75, right: 75, top: 90),
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Expanded(
-                      child: Container(
-                          height: 57,
-                          child: customelevatedbutton(
-                            child: customText(text: "Continue", size: 19),
-                            color: AppColor.colorred,
-                            onpress: () {
-                              if (type == 'Buyer') {
-                                Navigator.pushNamed(
-                                    context, RoutesName.onboardscreen1);
-                              } else if (type == 'Seller') {
-                                Navigator.pushNamed(
-                                    context, RoutesName.onboardscreen2);
-                              }
-                            },
-                          )),
-                    ),
-                  ],
-                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 75, right: 75, top: 90),
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                        height: 57,
+                        child: customelevatedbutton(
+                          child: customText(text: "Continue", size: 19),
+                          color: AppColor.colorred,
+                          onpress: () {
+                            if (type == 'Buyer') {
+                              Navigator.pushNamed(
+                                  context, RoutesName.onboardscreen1);
+                            } else if (type == 'Seller') {
+                              Navigator.pushNamed(
+                                  context, RoutesName.onboardscreen2);
+                            }
+                          },
+                        )),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ));
   }

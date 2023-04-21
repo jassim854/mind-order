@@ -22,14 +22,14 @@ class customlogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    return Container(
+    return SizedBox(
       height: 170,
       child: Stack(
         children: [
           colorcontainer == true
               ? Container(
                   height: 180,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       boxShadow: [
                         BoxShadow(
                           color: AppColor.colorgrey,
@@ -44,52 +44,49 @@ class customlogo extends StatelessWidget {
               : Container(),
           Positioned.fill(
             top: 25,
-            child: Container(
-              child: Column(
-                children: [
-                  type == 'Buyer'
-                      ? Flexible(
-                          flex: 2,
+            child: Column(
+              children: [
+                type == 'Buyer'
+                    ? Flexible(
+                        child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                                image: splashscreen == true
+                                    ? const DecorationImage(
+                                        image: AssetImage(images.mindlogo),
+                                        fit: BoxFit.cover)
+                                    : const DecorationImage(
+                                        image: AssetImage(images.logo),
+                                        fit: BoxFit.cover))),
+                      )
+                    : Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10),
                           child: Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                  image: splashscreen == true
-                                      ? DecorationImage(
-                                          image: AssetImage(images.mindlogo),
-                                          fit: BoxFit.cover)
-                                      : DecorationImage(
-                                          image: AssetImage(images.logo),
-                                          fit: BoxFit.cover))),
-                        )
-                      : Flexible(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Container(
-                              height: 100,
-                              decoration: BoxDecoration(
-                                  color: AppColor.splashbackgroundcolor,
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: Image(
-                                image: AssetImage(images.sellermindlogo),
-                              ),
+                            height: 100,
+                            decoration: BoxDecoration(
+                                color: AppColor.splashbackgroundcolor,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: const Image(
+                              image: AssetImage(images.sellermindlogo),
                             ),
                           ),
                         ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: FittedBox(
-                      child: customText(
-                        text: "Mind Order",
-                        size: 20,
-                        weight: FontWeight.w500,
-                        textColor: textcolor,
-                        maxline: 1,
                       ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: FittedBox(
+                    child: customText(
+                      text: "Mind Order",
+                      size: 20,
+                      weight: FontWeight.w500,
+                      textColor: textcolor,
+                      maxline: 1,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Container(
@@ -103,9 +100,9 @@ class customlogo extends StatelessWidget {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: Icon(Icons.keyboard_arrow_left_outlined)),
+                        icon: const Icon(Icons.keyboard_arrow_left_outlined)),
                   )
-                : Image(
+                : const Image(
                     image: AssetImage(
                       images.mindlogo1,
                     ),
@@ -118,9 +115,19 @@ class customlogo extends StatelessWidget {
 }
 
 class customhomeLogo extends StatelessWidget {
-  final backarrow;
+  final bool backarrow, centerText;
 
-  const customhomeLogo({Key? key, this.backarrow}) : super(key: key);
+  final orderHistoryPage;
+
+  final text;
+
+  const customhomeLogo(
+      {Key? key,
+      required this.backarrow,
+      required this.centerText,
+      this.text,
+      this.orderHistoryPage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -133,38 +140,48 @@ class customhomeLogo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           backarrow == true
-              ? Container(
-                  child: Transform.scale(
-                    scale: 1.4,
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(Icons.keyboard_arrow_left_outlined)),
-                  ),
-                )
+              ? Transform.scale(
+                scale: 1.4,
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.keyboard_arrow_left_outlined)),
+              )
               : Builder(builder: (context) {
                   return InkWell(
                       onTap: () {
                         Scaffold.of(context).openDrawer();
                       },
-                      child: Container(
-                          child: Transform.scale(
-                              scale: 1.6,
-                              alignment: Alignment.topLeft,
-                              child: customImageIcon(
-                                  imageicon: images.drawerIcon))));
+                      child: Transform.scale(
+                          scale: 1.6,
+                          alignment: Alignment.topLeft,
+                          child: const customImageIcon(img: images.drawerIcon)));
                 }),
           Container(
+              padding: orderHistoryPage == true
+                  ? const EdgeInsets.only(
+                      right: 10,
+                    )
+                  : EdgeInsets.zero,
+              child: customText(
+                text: centerText == true ? text : '',
+                weight: FontWeight.bold,
+                size: orderHistoryPage == true ? 30 : 20,
+                textColor: AppColor.headertextcolor,
+              )),
+          Container(
+
             padding: EdgeInsets.only(top: backarrow == true ? 0 : 10),
             child: Transform.scale(
-              scale: 2.4,
-              child: customImageIcon(
-                imageicon: images.logo,
-                color: AppColor.splashbackgroundcolor,
-              ),
-            ),
+                scale: 2.4,
+                child: orderHistoryPage == true
+                    ? const SizedBox.shrink()
+                    : const customImageIcon(
+                        img: images.logo,
+                        color: AppColor.splashbackgroundcolor,
+                      )),
           )
         ],
       ),

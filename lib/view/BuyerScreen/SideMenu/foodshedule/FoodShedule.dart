@@ -15,12 +15,12 @@ class _foodsheduleState extends State<foodshedule> {
     return SafeArea(
         child: Scaffold(
       body: ListView(
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
         children: [
           Container(
             width: double.infinity,
             height: 160,
-            decoration: BoxDecoration(color: Color(0xffffffff), boxShadow: [
+            decoration: BoxDecoration(color: const Color(0xffffffff), boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(1),
                 // spreadRadius: 100,
@@ -39,9 +39,9 @@ class _foodsheduleState extends State<foodshedule> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
+                            padding: const EdgeInsets.only(left: 8, top: 20),
                             child: Container(
-                              child: ImageIcon(
+                              child: const ImageIcon(
                                 AssetImage(
                                   "assets/accicons/drawericon.png",
                                 ),
@@ -50,14 +50,14 @@ class _foodsheduleState extends State<foodshedule> {
                             ),
                           ));
                     }),
-                    ImageIcon(
+                    const ImageIcon(
                       AssetImage("assets/images/logo.png"),
                       color: Colors.red,
                       size: 70,
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -71,7 +71,7 @@ class _foodsheduleState extends State<foodshedule> {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.keyboard_arrow_left,
                               size: 37,
                             )),
@@ -80,7 +80,7 @@ class _foodsheduleState extends State<foodshedule> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Container(
-                        child: Text(
+                        child: const Text(
                           "Set Food Schedule",
                           style: TextStyle(
                               fontSize: 34,
@@ -98,7 +98,7 @@ class _foodsheduleState extends State<foodshedule> {
             padding: const EdgeInsets.only(top: 30, left: 30),
             child: Container(
               alignment: Alignment.centerLeft,
-              child: Text("Set Desired Time",
+              child: const Text("Set Desired Time",
                   style: TextStyle(
                       fontSize: 25,
                       color: Color(0xff40484E),
@@ -123,9 +123,9 @@ class _foodsheduleState extends State<foodshedule> {
                           width: 40,
                           height: 40,
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                          child: Text(
+                          child: const Text(
                             "S",
                             style: TextStyle(fontSize: 22),
                           ),
@@ -140,9 +140,9 @@ class _foodsheduleState extends State<foodshedule> {
                             // maxLines: null,
                             // expands: true,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
-                                fillColor: Color(0xffEDEFF3),
+                                fillColor: const Color(0xffEDEFF3),
                                 filled: true,
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -160,9 +160,9 @@ class _foodsheduleState extends State<foodshedule> {
                           width: 40,
                           height: 40,
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                          child: Text(
+                          child: const Text(
                             "M",
                             style: TextStyle(fontSize: 22),
                           ),
@@ -177,9 +177,9 @@ class _foodsheduleState extends State<foodshedule> {
                             // maxLines: null,
                             // expands: true,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
-                                fillColor: Color(0xffEDEFF3),
+                                fillColor: const Color(0xffEDEFF3),
                                 filled: true,
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -197,9 +197,9 @@ class _foodsheduleState extends State<foodshedule> {
                           width: 40,
                           height: 40,
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                          child: Text(
+                          child: const Text(
                             "T",
                             style: TextStyle(fontSize: 22),
                           ),
@@ -214,9 +214,9 @@ class _foodsheduleState extends State<foodshedule> {
                             // maxLines: null,
                             // expands: true,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
-                                fillColor: Color(0xffEDEFF3),
+                                fillColor: const Color(0xffEDEFF3),
                                 filled: true,
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -234,9 +234,9 @@ class _foodsheduleState extends State<foodshedule> {
                           width: 40,
                           height: 40,
                           alignment: Alignment.center,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                          child: Text(
+                          child: const Text(
                             "W",
                             style: TextStyle(fontSize: 22),
                           ),
@@ -251,9 +251,9 @@ class _foodsheduleState extends State<foodshedule> {
                             // maxLines: null,
                             // expands: true,
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17),
+                            style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
-                                fillColor: Color(0xffEDEFF3),
+                                fillColor: const Color(0xffEDEFF3),
                                 filled: true,
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
@@ -279,9 +279,9 @@ class _foodsheduleState extends State<foodshedule> {
                         width: 40,
                         height: 40,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                        child: Text(
+                        child: const Text(
                           "T",
                           style: TextStyle(fontSize: 22),
                         ),
@@ -295,10 +295,10 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
-                          style: TextStyle(fontSize: 17),
+                          style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
-                              fillColor: Color(0xffEDEFF3),
+                              fillColor: const Color(0xffEDEFF3),
                               filled: true,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -316,9 +316,9 @@ class _foodsheduleState extends State<foodshedule> {
                         width: 40,
                         height: 40,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                        child: Text(
+                        child: const Text(
                           "F",
                           style: TextStyle(fontSize: 22),
                         ),
@@ -332,10 +332,10 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
-                          style: TextStyle(fontSize: 17),
+                          style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
-                              fillColor: Color(0xffEDEFF3),
+                              fillColor: const Color(0xffEDEFF3),
                               filled: true,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -353,9 +353,9 @@ class _foodsheduleState extends State<foodshedule> {
                         width: 40,
                         height: 40,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color(0xffEDEFF3), shape: BoxShape.circle),
-                        child: Text(
+                        child: const Text(
                           "S",
                           style: TextStyle(fontSize: 22),
                         ),
@@ -369,10 +369,10 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
-                          style: TextStyle(fontSize: 17),
+                          style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
-                              fillColor: Color(0xffEDEFF3),
+                              fillColor: const Color(0xffEDEFF3),
                               filled: true,
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
@@ -407,9 +407,9 @@ class _foodsheduleState extends State<foodshedule> {
                         onPressed: (() {
                           showDialog(
                               context: context,
-                              builder: ((context) => newmethod()));
+                              builder: ((context) => const newmethod()));
                         }),
-                        child: Text(
+                        child: const Text(
                           "Pay for 1 week",
                           style: TextStyle(fontSize: 19),
                         )),
@@ -425,9 +425,9 @@ class _foodsheduleState extends State<foodshedule> {
                         onPressed: (() {
                           showDialog(
                               context: context,
-                              builder: ((context) => newmethod()));
+                              builder: ((context) => const newmethod()));
                         }),
-                        child: Text(
+                        child: const Text(
                           "Pay for 1 month",
                           style: TextStyle(fontSize: 19),
                         )),
@@ -438,7 +438,7 @@ class _foodsheduleState extends State<foodshedule> {
           )
         ],
       ),
-      drawer: mydrawer(),
+      drawer: const mydrawer(),
     ));
   }
 }
@@ -462,18 +462,18 @@ class _newmethodState extends State<newmethod> {
             height: 250,
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 38,
                 ),
-                Text(
+                const Text(
                   "Thank you for\nyour order",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
-                Text(
+                const Text(
                   "You can track\nthe pickup address\nlater in Orders History",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17.5),
@@ -489,8 +489,8 @@ class _newmethodState extends State<newmethod> {
                 width: 60,
                 height: 60,
                 decoration:
-                    BoxDecoration(color: Colors.red, shape: BoxShape.circle),
-                child: Icon(
+                    const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                child: const Icon(
                   Icons.check,
                   color: Colors.white,
                   size: 45,

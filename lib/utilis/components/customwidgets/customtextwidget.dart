@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class customText extends StatelessWidget {
   final String text;
@@ -21,11 +22,15 @@ class customText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      
       text,
-      style: TextStyle(
+      
+      style: GoogleFonts.nunito(
+        textStyle: TextStyle(
         fontSize: size,
         fontWeight: weight,
         color: textColor,
+        ),
       ),
       textAlign: textalignment,
       maxLines: maxline,

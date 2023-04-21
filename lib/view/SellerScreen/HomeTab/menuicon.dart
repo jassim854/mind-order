@@ -9,7 +9,7 @@ class MenuIcon extends StatelessWidget {
         child: Scaffold(
             body: ListView(
       children: [
-        Container(
+        SizedBox(
           width: double.infinity,
           height: 130,
           child: Column(
@@ -24,14 +24,12 @@ class MenuIcon extends StatelessWidget {
                           Scaffold.of(context).openDrawer();
                         },
                         child: Padding(
-                          padding: EdgeInsets.only(left: 8, top: 20),
-                          child: Container(
-                            child: ImageIcon(
-                              AssetImage(
-                                "assets/accicons/drawericon.png",
-                              ),
-                              size: 37,
+                          padding: const EdgeInsets.only(left: 8, top: 20),
+                          child: const ImageIcon(
+                            AssetImage(
+                              "assets/accicons/drawericon.png",
                             ),
+                            size: 37,
                           ),
                         ));
                   }),
@@ -41,12 +39,12 @@ class MenuIcon extends StatelessWidget {
                       height: 45,
                       width: 45,
                       decoration: BoxDecoration(
-                          color: Color(0xffFC4747),
+                          color: const Color(0xffFC4747),
                           borderRadius: BorderRadius.circular(12)),
                       child: Transform.scale(
                         scale: 0.6,
-                        child: Image(
-                          image: const AssetImage(
+                        child: const Image(
+                          image: AssetImage(
                               "assets/accicons/sellerlogo.png"),
                         ),
                       ),
@@ -54,7 +52,7 @@ class MenuIcon extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -62,17 +60,15 @@ class MenuIcon extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Container(
-                      child: Transform.scale(
-                        scale: 1.8,
-                        child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              Icons.keyboard_arrow_left,
-                            )),
-                      ),
+                    child: Transform.scale(
+                      scale: 1.8,
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.keyboard_arrow_left,
+                          )),
                     ),
                   ),
                   Expanded(
@@ -82,7 +78,7 @@ class MenuIcon extends StatelessWidget {
                         alignment: Alignment.center,
                         height: 50,
                         width: 240,
-                        child: Text(
+                        child: const Text(
                           "Set Menu Icon",
                           style: TextStyle(
                               fontSize: 34,

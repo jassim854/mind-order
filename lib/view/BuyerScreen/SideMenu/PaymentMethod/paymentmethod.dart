@@ -17,7 +17,7 @@ class paymentmethods extends StatefulWidget {
 class _paymentmethodsState extends State<paymentmethods> {
   bool isvisible = false;
 
-  DateTime? _datetime;
+
   bool press = false;
   bool press1 = false;
   var f;
@@ -27,13 +27,13 @@ class _paymentmethodsState extends State<paymentmethods> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            drawer: mydrawer(),
-            backgroundColor: Color(0xfffafafb),
-            body: ListView(physics: ScrollPhysics(), children: [
+            drawer: const mydrawer(),
+            backgroundColor: const Color(0xfffafafb),
+            body: ListView(physics: const ScrollPhysics(), children: [
               Container(
                 height: 140,
                 decoration:
-                    BoxDecoration(color: Color(0xfffffffff), boxShadow: [
+                    BoxDecoration(color: const Color(0xfffffffff), boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(1),
                     // spreadRadius: 100,
@@ -52,25 +52,23 @@ class _paymentmethodsState extends State<paymentmethods> {
                                 Scaffold.of(context).openDrawer();
                               },
                               child: Padding(
-                                padding: EdgeInsets.only(left: 8, top: 20),
-                                child: Container(
-                                  child: ImageIcon(
-                                    AssetImage(
-                                      "assets/accicons/drawericon.png",
-                                    ),
-                                    size: 37,
+                                padding: const EdgeInsets.only(left: 8, top: 20),
+                                child: const ImageIcon(
+                                  AssetImage(
+                                    "assets/accicons/drawericon.png",
                                   ),
+                                  size: 37,
                                 ),
                               ));
                         }),
-                        ImageIcon(
+                        const ImageIcon(
                           AssetImage("assets/images/logo.png"),
                           color: Colors.red,
                           size: 70,
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 2,
                     ),
                     Row(
@@ -78,27 +76,23 @@ class _paymentmethodsState extends State<paymentmethods> {
                       children: [
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Container(
-                            child: IconButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(
-                                  Icons.keyboard_arrow_left,
-                                  size: 37,
-                                )),
-                          ),
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.keyboard_arrow_left,
+                                size: 37,
+                              )),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Container(
-                            child: Text(
-                              "Payment Methods",
-                              style: TextStyle(
-                                  fontSize: 34,
-                                  color: Color(0xff40484E),
-                                  fontWeight: FontWeight.w600),
-                            ),
+                          child: const Text(
+                            "Payment Methods",
+                            style: TextStyle(
+                                fontSize: 34,
+                                color: Color(0xff40484E),
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                       ],
@@ -117,10 +111,10 @@ class _paymentmethodsState extends State<paymentmethods> {
                             height: 270,
                             width: 300,
                             decoration: BoxDecoration(
-                                color: Color(0xffffffff),
+                                color: const Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(15),
                                 boxShadow: [
-                                  BoxShadow(
+                                  const BoxShadow(
                                       // color: Colors.black,
                                       offset: Offset(0, 0),
                                       spreadRadius: 0,
@@ -136,7 +130,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                                   child: Container(
                                       width: 40,
                                       height: 40,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                               "assets/accicons/paypal.png",
@@ -157,8 +151,8 @@ class _paymentmethodsState extends State<paymentmethods> {
                                             });
                                           },
                                           icon: press == true
-                                              ? Icon(Icons.check_circle)
-                                              : Icon(Icons
+                                              ? const Icon(Icons.check_circle)
+                                              : const Icon(Icons
                                                   .radio_button_off_outlined),
                                           color: Colors.red,
                                         ))),
@@ -170,7 +164,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                                       child: Container(
                                           width: 30,
                                           height: 30,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
                                                   "assets/accicons/trash1.png",
@@ -181,137 +175,48 @@ class _paymentmethodsState extends State<paymentmethods> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 75, left: 15, right: 0),
-                                  child: Container(
-                                    child: Form(
-                                      key: _formkey,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                              width: 312,
-                                              height: 70,
-                                              child: TextFormField(
-                                                  keyboardType: TextInputType
-                                                      .emailAddress,
-                                                  validator: (value) {
-                                                    if (value == null ||
-                                                        value.isEmpty) {
-                                                      return 'Please enter your Email';
-                                                    }
-                                                    if (!RegExp("@.")
-                                                        .hasMatch(value)) {
-                                                      return 'Please enter your valid email  ';
-                                                    }
-                                                    return null;
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.only(
-                                                            left: 30, top: 40),
-                                                    filled: true,
-                                                    fillColor:
-                                                        Color(0xffF3F5F8),
-                                                    errorStyle: TextStyle(
-                                                      fontSize: 15.0,
-                                                    ),
-                                                    hintText: "Email",
-                                                    hintStyle:
-                                                        TextStyle(fontSize: 20),
-                                                    enabledBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.white),
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    13.0))),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color: Colors.white,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2.0),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                  ))),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                              // color: Colors.red,
-                                              width: 312,
-                                              height: 70,
-                                              child: TextFormField(
-                                                // expands: true,
-                                                // maxLines: null,
+                                  child: Form(
+                                    key: _formkey,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                            width: 312,
+                                            height: 70,
+                                            child: TextFormField(
+                                                keyboardType: TextInputType
+                                                    .emailAddress,
                                                 validator: (value) {
                                                   if (value == null ||
                                                       value.isEmpty) {
-                                                    return 'Please enter your Password';
-                                                  } else if (value.length <=
-                                                      7) {
-                                                    return 'Please enter your password greater than 8 ';
+                                                    return 'Please enter your Email';
                                                   }
-
+                                                  if (!RegExp("@.")
+                                                      .hasMatch(value)) {
+                                                    return 'Please enter your valid email  ';
+                                                  }
                                                   return null;
                                                 },
-                                                decoration: InputDecoration(
+                                                decoration: const InputDecoration(
                                                   contentPadding:
                                                       EdgeInsets.only(
                                                           left: 30, top: 40),
                                                   filled: true,
-                                                  fillColor: Color(0xffF3F5F8),
+                                                  fillColor:
+                                                      Color(0xffF3F5F8),
                                                   errorStyle: TextStyle(
                                                     fontSize: 15.0,
                                                   ),
-                                                  suffixIcon: InkWell(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        isvisible = !isvisible;
-                                                      });
-                                                    },
-                                                    child: ImageIcon(
-                                                      AssetImage(
-                                                          "assets/accicons/password.png"),
-                                                      color: isvisible
-                                                          ? Colors.red
-                                                          : Colors.black,
-                                                    ),
-                                                  ),
-                                                  hintText: "Password",
+                                                  hintText: "Email",
                                                   hintStyle:
                                                       TextStyle(fontSize: 20),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .white),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(
-                                                                      13.0))),
+                                                  enabledBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color:
+                                                              Colors.white),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  13.0))),
                                                   focusedBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
@@ -342,12 +247,99 @@ class _paymentmethodsState extends State<paymentmethods> {
                                                             Radius.circular(
                                                                 13.0)),
                                                   ),
+                                                ))),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                            // color: Colors.red,
+                                            width: 312,
+                                            height: 70,
+                                            child: TextFormField(
+                                              // expands: true,
+                                              // maxLines: null,
+                                              validator: (value) {
+                                                if (value == null ||
+                                                    value.isEmpty) {
+                                                  return 'Please enter your Password';
+                                                } else if (value.length <=
+                                                    7) {
+                                                  return 'Please enter your password greater than 8 ';
+                                                }
+
+                                                return null;
+                                              },
+                                              decoration: InputDecoration(
+                                                contentPadding:
+                                                    const EdgeInsets.only(
+                                                        left: 30, top: 40),
+                                                filled: true,
+                                                fillColor: const Color(0xffF3F5F8),
+                                                errorStyle: const TextStyle(
+                                                  fontSize: 15.0,
                                                 ),
-                                                obscureText:
-                                                    isvisible ? false : true,
-                                              )),
-                                        ],
-                                      ),
+                                                suffixIcon: InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      isvisible = !isvisible;
+                                                    });
+                                                  },
+                                                  child: ImageIcon(
+                                                    const AssetImage(
+                                                        "assets/accicons/password.png"),
+                                                    color: isvisible
+                                                        ? Colors.red
+                                                        : Colors.black,
+                                                  ),
+                                                ),
+                                                hintText: "Password",
+                                                hintStyle:
+                                                    const TextStyle(fontSize: 20),
+                                                enabledBorder:
+                                                    const OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .white),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius.circular(
+                                                                    13.0))),
+                                                focusedBorder:
+                                                    const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Colors.white,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              13.0)),
+                                                ),
+                                                errorBorder:
+                                                    const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 2),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              13.0)),
+                                                ),
+                                                focusedErrorBorder:
+                                                    const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors.red,
+                                                      width: 2.0),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              13.0)),
+                                                ),
+                                              ),
+                                              obscureText:
+                                                  isvisible ? false : true,
+                                            )),
+                                      ],
                                     ),
                                   ),
                                 )
@@ -360,10 +352,10 @@ class _paymentmethodsState extends State<paymentmethods> {
                             height: 325,
                             width: 300,
                             decoration: BoxDecoration(
-                                color: Color(0xffffffff),
+                                color: const Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(15),
                                 boxShadow: [
-                                  BoxShadow(
+                                  const BoxShadow(
                                       // color: Colors.black,
                                       offset: Offset(0, 0),
                                       spreadRadius: 0,
@@ -379,7 +371,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                                   child: Container(
                                       width: 40,
                                       height: 40,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                               "assets/accicons/creditcard.png",
@@ -400,8 +392,8 @@ class _paymentmethodsState extends State<paymentmethods> {
                                             });
                                           },
                                           icon: press1 == true
-                                              ? Icon(Icons.check_circle)
-                                              : Icon(Icons
+                                              ? const Icon(Icons.check_circle)
+                                              : const Icon(Icons
                                                   .radio_button_off_outlined),
                                           color: Colors.red,
                                         ))),
@@ -413,7 +405,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                                       child: Container(
                                           width: 30,
                                           height: 30,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
                                                   "assets/accicons/trash1.png",
@@ -424,361 +416,359 @@ class _paymentmethodsState extends State<paymentmethods> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: 75, left: 15, right: 0),
-                                  child: Container(
-                                    child: Form(
-                                      key: _formkey1,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                              width: 312,
-                                              height: 70,
-                                              child: TextFormField(
-                                                  keyboardType: TextInputType
-                                                      .emailAddress,
-                                                  validator: (value) {
-                                                    if (value == null ||
-                                                        value.isEmpty) {
-                                                      return 'Please enter your Card Number';
-                                                    }
-
-                                                    return null;
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.only(
-                                                            left: 30, top: 40),
-                                                    filled: true,
-                                                    fillColor:
-                                                        Color(0xffF3F5F8),
-                                                    errorStyle: TextStyle(
-                                                      fontSize: 15.0,
-                                                    ),
-                                                    hintText: "Card Number",
-                                                    hintStyle:
-                                                        TextStyle(fontSize: 20),
-                                                    enabledBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.white),
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    13.0))),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color: Colors.white,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2.0),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                  ))),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
+                                  child: Form(
+                                    key: _formkey1,
+                                    child: Column(
+                                      children: [
+                                        Container(
                                             width: 312,
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                    width: 150,
-                                                    height: 70,
-                                                    child: TextFormField(
-                                                      keyboardAppearance: null,
-                                                      keyboardType: null,
-                                                      controller: _date,
-                                                      onTap: () async {
-                                                        print("yess");
-                                                        DateTime? _datetime =
-                                                            await showDatePicker(
-                                                                context:
-                                                                    context,
-                                                                initialDate: f ==
-                                                                        null
-                                                                    ? DateTime
-                                                                        .now()
-                                                                    : f,
-                                                                firstDate:
-                                                                    DateTime(
-                                                                        1990),
-                                                                lastDate:
-                                                                    DateTime(
-                                                                        2050));
-                                                        if (_datetime != null) {
-                                                          setState(() {
-                                                            f = _datetime;
-                                                          });
-                                                        }
-                                                        if (_datetime != null) {
-                                                          setState(() {
-                                                            _date
-                                                                .text = DateFormat(
-                                                                    'dd-MM-yy')
-                                                                .format(
-                                                                    _datetime);
-                                                          });
-                                                        }
-                                                      },
-                                                      // expands: true,
-                                                      // maxLines: null,
-                                                      validator: (value) {
-                                                        if (value == null ||
-                                                            value.isEmpty) {
-                                                          return 'Enter Expiry date';
-                                                        }
+                                            height: 70,
+                                            child: TextFormField(
+                                                keyboardType: TextInputType
+                                                    .emailAddress,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Please enter your Card Number';
+                                                  }
 
-                                                        return null;
-                                                      },
-                                                      decoration:
-                                                          InputDecoration(
-                                                        contentPadding:
-                                                            EdgeInsets.only(
-                                                                left: 20,
-                                                                top: 40,
-                                                                right: 0),
-                                                        filled: true,
-                                                        fillColor:
-                                                            Color(0xffF3F5F8),
-                                                        errorStyle: TextStyle(
-                                                          fontSize: 15.0,
-                                                        ),
-                                                        hintText: "dd/mm/yy",
-                                                        hintStyle: TextStyle(
-                                                            fontSize: 20),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                                    color: Colors
-                                                                        .white),
-                                                            borderRadius:
-                                                                BorderRadius.all(
-                                                                    Radius.circular(
-                                                                        13.0))),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.white,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 2.0),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                      ),
-                                                    )),
-                                                SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Container(
-                                                    width: 152,
-                                                    height: 70,
-                                                    child: TextFormField(
-                                                      // expands: true,
-                                                      // maxLines: null,
-                                                      validator: (value) {
-                                                        if (value == null ||
-                                                            value.isEmpty) {
-                                                          return 'Enter CVC/CVV';
-                                                        }
-
-                                                        return null;
-                                                      },
-                                                      decoration:
-                                                          InputDecoration(
-                                                        contentPadding:
-                                                            EdgeInsets.only(
-                                                                left: 20,
-                                                                top: 40,
-                                                                right: 0),
-                                                        filled: true,
-                                                        fillColor:
-                                                            Color(0xffF3F5F8),
-                                                        errorStyle: TextStyle(
-                                                          fontSize: 15.0,
-                                                        ),
-                                                        hintText: "CVC/CVV",
-                                                        hintStyle: TextStyle(
-                                                            fontSize: 20),
-                                                        enabledBorder: OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                                    color: Colors
-                                                                        .white),
-                                                            borderRadius:
-                                                                BorderRadius.all(
-                                                                    Radius.circular(
-                                                                        13.0))),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Colors.white,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 2),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                                  color: Colors
-                                                                      .red,
-                                                                  width: 2.0),
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          13.0)),
-                                                        ),
-                                                      ),
-                                                    )),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                              width: 312,
-                                              height: 70,
-                                              child: TextFormField(
-                                                  validator: (value) {
-                                                    if (value == null ||
-                                                        value.isEmpty) {
-                                                      return 'Please enter Cardholder Name';
-                                                    }
-
-                                                    return null;
-                                                  },
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.only(
-                                                            left: 20,
-                                                            top: 40,
-                                                            right: 0),
-                                                    filled: true,
-                                                    fillColor:
-                                                        Color(0xffF3F5F8),
-                                                    errorStyle: TextStyle(
-                                                      fontSize: 15.0,
+                                                  return null;
+                                                },
+                                                decoration: const InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          left: 30, top: 40),
+                                                  filled: true,
+                                                  fillColor:
+                                                      Color(0xffF3F5F8),
+                                                  errorStyle: TextStyle(
+                                                    fontSize: 15.0,
+                                                  ),
+                                                  hintText: "Card Number",
+                                                  hintStyle:
+                                                      TextStyle(fontSize: 20),
+                                                  enabledBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color:
+                                                              Colors.white),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  13.0))),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Colors.white,
                                                     ),
-                                                    hintText:
-                                                        "Cardholder Namer",
-                                                    hintStyle:
-                                                        TextStyle(fontSize: 20),
-                                                    enabledBorder: OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color:
-                                                                Colors.white),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red,
+                                                        width: 2),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red,
+                                                        width: 2.0),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                ))),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                          width: 312,
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                  width: 150,
+                                                  height: 70,
+                                                  child: TextFormField(
+                                                    keyboardAppearance: null,
+                                                    keyboardType: null,
+                                                    controller: _date,
+                                                    onTap: () async {
+                                                      print("yess");
+                                                      DateTime? _datetime =
+                                                          await showDatePicker(
+                                                              context:
+                                                                  context,
+                                                              initialDate: f ==
+                                                                      null
+                                                                  ? DateTime
+                                                                      .now()
+                                                                  : f,
+                                                              firstDate:
+                                                                  DateTime(
+                                                                      1990),
+                                                              lastDate:
+                                                                  DateTime(
+                                                                      2050));
+                                                      if (_datetime != null) {
+                                                        setState(() {
+                                                          f = _datetime;
+                                                        });
+                                                      }
+                                                      if (_datetime != null) {
+                                                        setState(() {
+                                                          _date
+                                                              .text = DateFormat(
+                                                                  'dd-MM-yy')
+                                                              .format(
+                                                                  _datetime);
+                                                        });
+                                                      }
+                                                    },
+                                                    // expands: true,
+                                                    // maxLines: null,
+                                                    validator: (value) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
+                                                        return 'Enter Expiry date';
+                                                      }
+
+                                                      return null;
+                                                    },
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left: 20,
+                                                              top: 40,
+                                                              right: 0),
+                                                      filled: true,
+                                                      fillColor:
+                                                          Color(0xffF3F5F8),
+                                                      errorStyle: TextStyle(
+                                                        fontSize: 15.0,
+                                                      ),
+                                                      hintText: "dd/mm/yy",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 20),
+                                                      enabledBorder: OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .white),
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius.circular(
+                                                                      13.0))),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                          color: Colors.white,
+                                                        ),
                                                         borderRadius:
                                                             BorderRadius.all(
-                                                                Radius.circular(
-                                                                    13.0))),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color: Colors.white,
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .red,
+                                                                width: 2),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .red,
+                                                                width: 2.0),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
+                                                      ),
                                                     ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
+                                                  )),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Container(
+                                                  width: 152,
+                                                  height: 70,
+                                                  child: TextFormField(
+                                                    // expands: true,
+                                                    // maxLines: null,
+                                                    validator: (value) {
+                                                      if (value == null ||
+                                                          value.isEmpty) {
+                                                        return 'Enter CVC/CVV';
+                                                      }
+
+                                                      return null;
+                                                    },
+                                                    decoration:
+                                                        const InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.only(
+                                                              left: 20,
+                                                              top: 40,
+                                                              right: 0),
+                                                      filled: true,
+                                                      fillColor:
+                                                          Color(0xffF3F5F8),
+                                                      errorStyle: TextStyle(
+                                                        fontSize: 15.0,
+                                                      ),
+                                                      hintText: "CVC/CVV",
+                                                      hintStyle: TextStyle(
+                                                          fontSize: 20),
+                                                      enabledBorder: OutlineInputBorder(
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .white),
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius.circular(
+                                                                      13.0))),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                          color: Colors.white,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .red,
+                                                                width: 2),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            BorderSide(
+                                                                color: Colors
+                                                                    .red,
+                                                                width: 2.0),
+                                                        borderRadius:
+                                                            BorderRadius.all(
+                                                                Radius
+                                                                    .circular(
+                                                                        13.0)),
+                                                      ),
+                                                    ),
+                                                  )),
+                                            ],
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Container(
+                                            width: 312,
+                                            height: 70,
+                                            child: TextFormField(
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'Please enter Cardholder Name';
+                                                  }
+
+                                                  return null;
+                                                },
+                                                decoration: const InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.only(
+                                                          left: 20,
+                                                          top: 40,
+                                                          right: 0),
+                                                  filled: true,
+                                                  fillColor:
+                                                      Color(0xffF3F5F8),
+                                                  errorStyle: TextStyle(
+                                                    fontSize: 15.0,
+                                                  ),
+                                                  hintText:
+                                                      "Cardholder Namer",
+                                                  hintStyle:
+                                                      TextStyle(fontSize: 20),
+                                                  enabledBorder: OutlineInputBorder(
                                                       borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2),
+                                                          color:
+                                                              Colors.white),
                                                       borderRadius:
                                                           BorderRadius.all(
                                                               Radius.circular(
-                                                                  13.0)),
+                                                                  13.0))),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color: Colors.white,
                                                     ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red,
-                                                          width: 2.0),
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  13.0)),
-                                                    ),
-                                                  ))),
-                                        ],
-                                      ),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red,
+                                                        width: 2),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red,
+                                                        width: 2.0),
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                13.0)),
+                                                  ),
+                                                ))),
+                                      ],
                                     ),
                                   ),
                                 )
                               ],
                             ))),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Column(
@@ -800,7 +790,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                                 _formkey1.currentState!.reset();
                               }
                             },
-                            child: Text(
+                            child: const Text(
                               "Save",
                               style: TextStyle(fontSize: 22),
                             ),
@@ -808,7 +798,7 @@ class _paymentmethodsState extends State<paymentmethods> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                   ],

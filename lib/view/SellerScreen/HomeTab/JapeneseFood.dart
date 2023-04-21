@@ -18,7 +18,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xffffffff),
+            backgroundColor: const Color(0xffffffff),
             body: ListView(
               children: [
                 Row(
@@ -31,14 +31,12 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
-                            child: Container(
-                              child: ImageIcon(
-                                AssetImage(
-                                  "assets/accicons/drawericon.png",
-                                ),
-                                size: 37,
+                            padding: const EdgeInsets.only(left: 8, top: 20),
+                            child: const ImageIcon(
+                              AssetImage(
+                                "assets/accicons/drawericon.png",
                               ),
+                              size: 37,
                             ),
                           ));
                     }),
@@ -48,12 +46,12 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                         height: 45,
                         width: 45,
                         decoration: BoxDecoration(
-                            color: Color(0xffFC4747),
+                            color: const Color(0xffFC4747),
                             borderRadius: BorderRadius.circular(12)),
                         child: Transform.scale(
                           scale: 0.6,
-                          child: Image(
-                            image: const AssetImage(
+                          child: const Image(
+                            image: AssetImage(
                                 "assets/accicons/sellerlogo.png"),
                           ),
                         ),
@@ -71,8 +69,8 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 5),
                           child: Text(
                             "Kim's",
                             style: TextStyle(
@@ -85,7 +83,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                           child: Text(
                             "Japanese Food",
                             style: Theme.of(context).textTheme.headline4?.merge(
-                                TextStyle(
+                                const TextStyle(
                                     color: Colors.red,
                                     fontWeight: FontWeight.w600)),
                           ),
@@ -99,12 +97,12 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                   child: TextField(
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(15)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(15)),
@@ -144,7 +142,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
             ),
             bottomNavigationBar: BottomAppBar(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -154,11 +152,11 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Transform.translate(
-                      offset: Offset(32, 0),
+                      offset: const Offset(32, 0),
                       child: Container(
                         width: 35,
                         height: 35,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(8),
@@ -169,10 +167,10 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => addcategory(),
+                                  builder: (context) => const addcategory(),
                                 ));
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.add,
                             color: Colors.red,
                             size: 30,
@@ -184,11 +182,11 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                         height: 40,
                         width: 80,
                         alignment: Alignment.center,
-                        child: Text(
+                        child: const Text(
                           "Category",
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         )),
-                    Container(
+                    SizedBox(
                       height: 60,
                       width: 60,
                       child: Stack(
@@ -203,7 +201,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                               alignment: Alignment.bottomCenter,
                               child: Transform.scale(
                                 scale: 3.2,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.arrow_drop_up,
                                   color: Colors.white,
                                 ),
@@ -219,7 +217,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                               alignment: Alignment.topCenter,
                               child: Transform.scale(
                                 scale: 3.2,
-                                child: Icon(
+                                child: const Icon(
                                   Icons.arrow_drop_down,
                                   color: Colors.white,
                                 ),
@@ -230,12 +228,12 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(-30, 0),
+                      offset: const Offset(-30, 0),
                       child: Container(
                           height: 40,
                           width: 80,
                           alignment: Alignment.center,
-                          child: Text(
+                          child: const Text(
                             "Category",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           )),
@@ -249,11 +247,11 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
   listviewbuilder() {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: Container(
+      child: SizedBox(
         width: 400,
         height: 90,
         child: ListView.builder(
-          physics: ScrollPhysics(),
+          physics: const ScrollPhysics(),
           itemCount: 4,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
@@ -271,7 +269,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.orange, width: 4.2)),
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                       size: 30,
                     ),
@@ -281,7 +279,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
             } else {
               return Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: Container(
+                child: SizedBox(
                     width: 90,
                     child: Flex(
                       direction: Axis.vertical,
@@ -295,7 +293,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                           height: 25,
                           width: 70,
                           alignment: Alignment.bottomCenter,
-                          child: Text(
+                          child: const Text(
                             " 21 ",
                             style: TextStyle(fontSize: 18),
                           ),
@@ -327,7 +325,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                 ),
                 child: Text(
                   first,
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
+                  style: const TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -337,7 +335,7 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => expandedFood(),
+                          builder: (context) => const expandedFood(),
                         ));
                   },
                   child: Wrap(
@@ -345,18 +343,16 @@ class _japenesesellerfoodState extends State<japenesesellerfood> {
                     alignment: WrapAlignment.end,
                     spacing: 20.0,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 50,
                         child: Text(
                           last,
-                          style: TextStyle(color: Colors.red, fontSize: 17),
+                          style: const TextStyle(color: Colors.red, fontSize: 17),
                         ),
                       ),
-                      Container(
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.red,
-                        ),
+                      const Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.red,
                       ),
                     ],
                   )),
@@ -381,25 +377,25 @@ popup(BuildContext context) {
         //           builder: (context) => CuisineScreen()));
         // }
       }),
-      icon: ImageIcon(AssetImage("assets/images/icon1.png")),
+      icon: const ImageIcon(AssetImage("assets/images/icon1.png")),
       itemBuilder: (context) => [
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Price"),
               value: 0,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Distance"),
               value: 1,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("timee"),
               value: 2,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Vlog"),
               value: 3,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Resturnats"),
               value: 4,
             )

@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
-import 'package:my_order/view/BuyerScreen/HomeTab/Homescreen/homeScreen.dart';
 
 import '../../../utilis/components/customwidgets/customIcon.dart';
 import '../../../utilis/constants/Colors/colors.dart';
 
-class bottomAppbar extends StatelessWidget {
+var ind;
+
+class bottomAppbar extends StatefulWidget {
   const bottomAppbar({Key? key}) : super(key: key);
 
+  @override
+  State<bottomAppbar> createState() => _bottomAppbarState();
+}
+
+class _bottomAppbarState extends State<bottomAppbar> {
   @override
   Widget build(BuildContext context) {
     final Placeholder = Opacity(
@@ -15,9 +21,10 @@ class bottomAppbar extends StatelessWidget {
         child: IconButton(
             onPressed: () {}, icon: const Icon(Icons.search_off_rounded)));
     return BottomAppBar(
+      color: Colors.transparent,
       child: Container(
         height: 55,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: AppColor.bottomNavColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15), topRight: Radius.circular(15))),
@@ -25,30 +32,65 @@ class bottomAppbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             iconitem(
-              index: 0,
-              icon:
-                  customIcon(iconname: Icons.home, color: AppColor.colorwhite),
+              onpressed: () {
+                print('home');
+                setState(() {
+                  ind = 0;
+                });
+                if (ind == 0) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, RoutesName.homescreen, (RoutesName) => false);
+                }
+              },
+              ind: ind,
+              icon: customIcon(
+                  iconname: Icons.home,
+                  color: ind == 0 ? AppColor.colorYellow : AppColor.colorwhite),
             ),
             iconitem(
-              index: 1,
+              onpressed: () {
+                setState(() {
+                  ind = 1;
+                });
+                if (ind == 1) {
+                  Navigator.pushNamed(context, RoutesName.orderHistory);
+                }
+              },
+              ind: ind,
               icon: customIcon(
                 iconname: Icons.notifications_sharp,
-                color: AppColor.colorwhite,
+                color: ind == 1 ? AppColor.colorYellow : AppColor.colorwhite,
               ),
             ),
             Placeholder,
             iconitem(
-              index: 2,
+              onpressed: () {
+                setState(() {
+                  ind = 2;
+                });
+                if (ind == 2) {
+                  Navigator.pushNamed(context, RoutesName.Favourite);
+                }
+              },
+              ind: ind,
               icon: customIcon(
                 iconname: Icons.favorite,
-                color: AppColor.colorwhite,
+                color: ind == 2 ? AppColor.colorYellow : AppColor.colorwhite,
               ),
             ),
             iconitem(
-              index: 3,
+              onpressed: () {
+                setState(() {
+                  ind = 3;
+                });
+                if (ind == 3) {
+                  Navigator.pushNamed(context, RoutesName.cart);
+                }
+              },
+              ind: ind,
               icon: customIcon(
                 iconname: Icons.shopping_cart_sharp,
-                color: AppColor.colorwhite,
+                color: ind == 3 ? AppColor.colorYellow : AppColor.colorwhite,
               ),
             )
           ],
@@ -59,31 +101,23 @@ class bottomAppbar extends StatelessWidget {
 }
 
 class iconitem extends StatelessWidget {
-  final index, icon;
-  const iconitem({
+  final ind;
+
+  final icon, onpressed;
+  iconitem({
     Key? key,
-    required this.index,
     required this.icon,
+    this.ind,
+    this.onpressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: IconButton(
+    return IconButton(
       // focusColor: Colors.green,
-      onPressed: () {
-        if (index == 0) {
-          Navigator.pushNamed(context, RoutesName.homescreen);
-        } else if (index == 1) {
-          Navigator.pushNamed(context, RoutesName.orderHistory);
-        } else if (index == 2) {
-          Navigator.pushNamed(context, RoutesName.Favourite);
-        } else if (index == 3) {
-          Navigator.pushNamed(context, RoutesName.Cart);
-        }
-      },
+      onPressed: onpressed,
       icon: icon,
       iconSize: 30,
-    ));
+    );
   }
 }

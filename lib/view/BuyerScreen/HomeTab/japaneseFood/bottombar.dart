@@ -17,11 +17,11 @@ class _bottombarState extends State<bottombar> {
   int _selectedIndex = 2;
 
   final tabs = [
-    homeScreen(),
-    order1(),
-    JapaneseFood(),
-    Favourites(),
-    cartscreen(),
+    const homeScreen(),
+    const order1(),
+    const JapaneseFood(),
+    const Favourites(),
+    const cartscreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _bottombarState extends State<bottombar> {
         body: tabs[_selectedIndex],
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: Icon(
+          child: const Icon(
             Icons.search,
             color: Colors.white,
             size: 34,
@@ -40,43 +40,43 @@ class _bottombarState extends State<bottombar> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xffC6C6C6),
+          backgroundColor: const Color(0xffC6C6C6),
           currentIndex: _selectedIndex,
           showSelectedLabels: false,
           showUnselectedLabels: false,
-          selectedLabelStyle: TextStyle(
+          selectedLabelStyle: const TextStyle(
             color: Colors.black,
           ),
           iconSize: 25,
           items: [
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,
                 color: Colors.white,
               ),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.notifications_sharp,
                 color: Colors.white,
               ),
               label: 'Notification',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
                 color: Color(0xffC6C6C6),
               ),
               label: 'search',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.favorite,
                   color: Colors.white,
                 ),
                 label: 'Favourite'),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
                 icon: Icon(
                   Icons.shopping_cart_sharp,
                   color: Colors.white,

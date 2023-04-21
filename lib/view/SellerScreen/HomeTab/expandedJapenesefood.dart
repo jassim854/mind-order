@@ -17,7 +17,7 @@ class _expandedFoodState extends State<expandedFood> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xffffffff),
+            backgroundColor: const Color(0xffffffff),
             body: ListView(
               children: [
                 Row(
@@ -30,14 +30,12 @@ class _expandedFoodState extends State<expandedFood> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
-                            child: Container(
-                              child: ImageIcon(
-                                AssetImage(
-                                  "assets/accicons/drawericon.png",
-                                ),
-                                size: 37,
+                            padding: const EdgeInsets.only(left: 8, top: 20),
+                            child: const ImageIcon(
+                              AssetImage(
+                                "assets/accicons/drawericon.png",
                               ),
+                              size: 37,
                             ),
                           ));
                     }),
@@ -47,12 +45,12 @@ class _expandedFoodState extends State<expandedFood> {
                         height: 45,
                         width: 45,
                         decoration: BoxDecoration(
-                            color: Color(0xffFC4747),
+                            color: const Color(0xffFC4747),
                             borderRadius: BorderRadius.circular(12)),
                         child: Transform.scale(
                           scale: 0.6,
-                          child: Image(
-                            image: const AssetImage(
+                          child: const Image(
+                            image: AssetImage(
                                 "assets/accicons/sellerlogo.png"),
                           ),
                         ),
@@ -70,9 +68,9 @@ class _expandedFoodState extends State<expandedFood> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(
+                        const Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 5),
+                            padding: EdgeInsets.only(left: 5),
                             child: Text(
                               "Kim's",
                               style: TextStyle(
@@ -86,7 +84,7 @@ class _expandedFoodState extends State<expandedFood> {
                           child: Text(
                             "Japanese Food",
                             style: Theme.of(context).textTheme.headline4?.merge(
-                                TextStyle(
+                                const TextStyle(
                                     color: Colors.red,
                                     fontWeight: FontWeight.w600)),
                           ),
@@ -100,12 +98,12 @@ class _expandedFoodState extends State<expandedFood> {
                   child: TextField(
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(15)),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.white,
                             ),
                             borderRadius: BorderRadius.circular(15)),
@@ -127,8 +125,8 @@ class _expandedFoodState extends State<expandedFood> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      constraints: BoxConstraints.expand(width: 30, height: 30),
-                      child: FittedBox(
+                      constraints: const BoxConstraints.expand(width: 30, height: 30),
+                      child: const FittedBox(
                         child: Text(
                           "Starters",
                           style: TextStyle(
@@ -136,7 +134,7 @@ class _expandedFoodState extends State<expandedFood> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                         width: 330,
                         height: 700,
                         child: GridView.builder(
@@ -145,7 +143,7 @@ class _expandedFoodState extends State<expandedFood> {
                             ),
                             itemCount: 40,
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisSpacing: 5,
                                     mainAxisSpacing: 15,
                                     crossAxisCount: 3),
@@ -169,11 +167,11 @@ class _expandedFoodState extends State<expandedFood> {
                                                 });
                                               },
                                               child: Container(
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                     color: Color.fromARGB(
                                                         255, 220, 211, 211),
                                                     shape: BoxShape.circle),
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.edit_outlined,
                                                 ),
                                               ),
@@ -184,11 +182,11 @@ class _expandedFoodState extends State<expandedFood> {
                                   Flexible(
                                       child: Container(
                                           constraints: BoxConstraints.tight(
-                                              Size.fromRadius(15)),
+                                              const Size.fromRadius(15)),
                                           alignment: Alignment.bottomCenter,
                                           child: Text(
                                             x.toString(),
-                                            style: TextStyle(fontSize: 18),
+                                            style: const TextStyle(fontSize: 18),
                                           )))
                                 ],
                               );
@@ -216,7 +214,7 @@ class _expandedFoodState extends State<expandedFood> {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.orange, width: 4.2)),
-                  child: Icon(
+                  child: const Icon(
                     Icons.add,
                     size: 40,
                   ),
@@ -243,25 +241,25 @@ popup(BuildContext context) {
         //           builder: (context) => CuisineScreen()));
         // }
       }),
-      icon: ImageIcon(AssetImage("assets/images/icon1.png")),
+      icon: const ImageIcon(AssetImage("assets/images/icon1.png")),
       itemBuilder: (context) => [
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Price"),
               value: 0,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Distance"),
               value: 1,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("timee"),
               value: 2,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Vlog"),
               value: 3,
             ),
-            PopupMenuItem(
+            const PopupMenuItem(
               child: Text("Resturnats"),
               value: 4,
             )

@@ -29,7 +29,7 @@ class _stepsleftState extends State<stepsleft> {
       backgroundColor: AppColor.scaffoldcolor,
       body: Column(
         children: [
-          Flexible(
+          const Flexible(
             flex: 3,
             child: customlogo(
               textcolor: AppColor.headertextcolor,
@@ -39,14 +39,13 @@ class _stepsleftState extends State<stepsleft> {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                  child: FittedBox(
-                      child: customText(
+              child: FittedBox(
+                  child: customText(
                 text: "Just 2 Steps left",
                 textColor: AppColor.splashbackgroundcolor,
                 size: 30,
                 weight: FontWeight.w600,
-              ))),
+              )),
             ),
           ),
           Flexible(
@@ -60,14 +59,14 @@ class _stepsleftState extends State<stepsleft> {
                     showDialog(
                         context: context,
                         builder: ((context) {
-                          return CamGall(context, classname: stepsleft());
+                          return CamGall(context, classname: const stepsleft());
                         })).whenComplete(() {
                       print("clicked");
                       setState(() {});
                     });
                   });
                 },
-                child: Container(
+                child: SizedBox(
                     height: 140,
                     child: DottedBorder(
                         color: AppColor.splashbackgroundcolor.withOpacity(0.3),
@@ -85,7 +84,7 @@ class _stepsleftState extends State<stepsleft> {
                                 )))
                             : Container(
                                 alignment: Alignment.center,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
                                             images.uploadarrowImageIcon))),
@@ -96,12 +95,10 @@ class _stepsleftState extends State<stepsleft> {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 25),
-              child: Container(
-                child: FittedBox(
-                  child: customText(
-                    text: "Upload Shop;s Banner",
-                    size: 19,
-                  ),
+              child: FittedBox(
+                child: customText(
+                  text: "Upload Shop;s Banner",
+                  size: 19,
                 ),
               ),
             ),
@@ -126,10 +123,10 @@ class _stepsleftState extends State<stepsleft> {
                     ),
                     Flexible(
                       flex: 4,
-                      child: Container(
+                      child: SizedBox(
                         height: 75,
                         width: 170,
-                        child: customTextfield(
+                        child: const customTextfield(
                           hintstyle:
                               TextStyle(color: AppColor.lightgreyTextcolor),
                           contentPading: EdgeInsets.only(top: 55),
@@ -156,10 +153,10 @@ class _stepsleftState extends State<stepsleft> {
                     ),
                     Flexible(
                       flex: 4,
-                      child: Container(
+                      child: SizedBox(
                         height: 75,
                         width: 170,
-                        child: customTextfield(
+                        child: const customTextfield(
                           hintstyle:
                               TextStyle(color: AppColor.lightgreyTextcolor),
                           contentPading: EdgeInsets.only(top: 55),
@@ -175,110 +172,107 @@ class _stepsleftState extends State<stepsleft> {
             ),
           ),
           Flexible(
-            child: Container(
-                child: Padding(
+            child: Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: FittedBox(
-                child: customText(
-                  text: "Days Open",
-                  size: 22,
-                  weight: FontWeight.w500,
-                ),
+            child: customText(
+              text: "Days Open",
+              size: 22,
+              weight: FontWeight.w500,
+            ),
               ),
-            )),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 40),
-            child: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[0] = !days[0];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'S',
-                        color: days[0] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[1] = !days[1];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'M',
-                        color: days[1] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[2] = !days[2];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'T',
-                        color: days[2] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[3] = !days[3];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'W',
-                        color: days[3] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[4] = !days[4];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'T',
-                        color: days[4] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[5] = !days[5];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'F',
-                        color: days[5] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        days[6] = !days[6];
-                      });
-                    },
-                    child: customRoundButtonContainer(
-                        text: 'S',
-                        color: days[6] == false
-                            ? AppColor.textfieldcolorgrey
-                            : AppColor.colorred),
-                  )
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[0] = !days[0];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'S',
+                      color: days[0] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[1] = !days[1];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'M',
+                      color: days[1] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[2] = !days[2];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'T',
+                      color: days[2] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[3] = !days[3];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'W',
+                      color: days[3] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[4] = !days[4];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'T',
+                      color: days[4] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[5] = !days[5];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'F',
+                      color: days[5] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      days[6] = !days[6];
+                    });
+                  },
+                  child: customRoundButtonContainer(
+                      text: 'S',
+                      color: days[6] == false
+                          ? AppColor.textfieldcolorgrey
+                          : AppColor.colorred),
+                )
+              ],
             ),
           ),
           Padding(
@@ -288,7 +282,7 @@ class _stepsleftState extends State<stepsleft> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
+                    child: SizedBox(
                       height: 57,
                       child: customelevatedbutton(
                         onpress: () {

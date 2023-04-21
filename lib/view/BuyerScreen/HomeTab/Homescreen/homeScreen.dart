@@ -11,7 +11,7 @@ import 'package:my_order/view/BuyerScreen/HomeTab/bottomAppbar.dart';
 import '../drawerScreen/drawerscreen.dart';
 import '../../../../utilis/components/Customscreen/customHomecard.dart';
 
-import '../../../../utilis/components/Customscreen/CustomHomeicons.dart';
+import '../../../../utilis/components/Customscreen/customColumnIconText.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
@@ -44,10 +44,14 @@ class _Card1State extends State<homeScreen> {
         backgroundColor: AppColor.scaffoldcolor,
         body: Column(
           children: [
-            Flexible(child: customhomeLogo()),
+            const Flexible(
+                child: customhomeLogo(
+              backarrow: false,
+              centerText: false,
+            )),
             Flexible(
               child: Container(
-                  padding: EdgeInsets.only(top: 20, bottom: 10),
+                  padding: const EdgeInsets.only(top: 20, bottom: 10),
                   child: FittedBox(
                     child: customText(
                       text: "Welcome",
@@ -59,7 +63,7 @@ class _Card1State extends State<homeScreen> {
             ),
             Flexible(
               child: Container(
-                padding: EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 30),
                 child: FittedBox(
                   child: customText(
                       text: "Sebastian :)",
@@ -71,7 +75,7 @@ class _Card1State extends State<homeScreen> {
             ),
             Flexible(
               flex: 2,
-              child: Container(
+              child: SizedBox(
                 height: 120,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -119,7 +123,7 @@ class _Card1State extends State<homeScreen> {
             ),
             Flexible(
               child: Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 20,
                 ),
                 alignment: Alignment.centerLeft,
@@ -144,17 +148,21 @@ class _Card1State extends State<homeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: ListView.builder(
-                        physics: ScrollPhysics(parent: null),
+                        physics: const ScrollPhysics(parent: null),
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
                         itemBuilder: (context, index) {
-                          return Container(
+                          return SizedBox(
                             width: width * 0.25,
-                            child: CustomHomeIcon(
-                                size: 19.0,
+                            child: CustomColumnIconText(
+                              color: AppColor.headertextcolor,
+                              textsize: 14.0,
                                 img: index1[index],
                                 onclick: () {},
-                                text: name1[index]),
+                              text: name1[index],
+                              weight: FontWeight.w600,
+                              textcolor: AppColor.headertextcolor,
+                            ),
                           );
                         }),
                   ),
@@ -172,17 +180,21 @@ class _Card1State extends State<homeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: ListView.builder(
-                        physics: ScrollPhysics(parent: null),
+                        physics: const ScrollPhysics(parent: null),
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
                         itemBuilder: (context, index) {
-                          return Container(
+                          return SizedBox(
                             width: width * 0.25,
-                            child: CustomHomeIcon(
-                                size: 19.0,
+                            child: CustomColumnIconText(
+                              color: AppColor.headertextcolor,
+                              textsize: 14.0,
                                 img: index2[index],
                                 onclick: () {},
-                                text: name2[index]),
+                              text: name2[index],
+                              weight: FontWeight.w600,
+                              textcolor: AppColor.headertextcolor,
+                            ),
                           );
                         }),
                   ),
@@ -192,12 +204,12 @@ class _Card1State extends State<homeScreen> {
           ],
         ),
         drawer: const mydrawer(),
-        bottomNavigationBar: bottomAppbar(),
+        bottomNavigationBar: const bottomAppbar(),
         floatingActionButton: customFloatingButton(
             onpress: () {},
             child: Transform.scale(
                 scale: 1.7,
-                child: customIcon(
+                child: const customIcon(
                   iconname: Icons.search,
                   color: AppColor.colorwhite,
                 ))),

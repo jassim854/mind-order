@@ -40,106 +40,97 @@ class _verifyemailState extends State<verifyemail> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: AppColor.scaffoldcolor,
-            body: Container(
-              child: Column(children: [
-                Flexible(
-                  flex: 2,
-                  child: customlogo(
-                      textcolor: AppColor.headertextcolor,
-                      splashscreen: false,
-                      backarrow: true),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Container(
-
-                        // color: Colors.orange,
-                        child: customText(
-                      text: 'Write Your Email',
-                      textColor: AppColor.splashbackgroundcolor,
-                      size: 30,
-                      textalignment: TextAlign.center,
-                      weight: FontWeight.w600,
-                    )),
+            body: Column(children: [
+              const Flexible(
+                flex: 2,
+                child: customlogo(
+                    textcolor: AppColor.headertextcolor,
+                    splashscreen: false,
+                    backarrow: true),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: customText(
+                    text: 'Write Your Email',
+                    textColor: AppColor.splashbackgroundcolor,
+                    size: 30,
+                    textalignment: TextAlign.center,
+                    weight: FontWeight.w600,
                   ),
                 ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Container(
-
-                        // color: Colors.blue,
-                        child: customText(
-                      text: 'See if email is already in use',
-                      size: 23,
-                      textColor: AppColor.headertextcolor,
-                      weight: FontWeight.w500,
-                    )),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: customText(
+                    text: 'See if email is already in use',
+                    size: 23,
+                    textColor: AppColor.headertextcolor,
+                    weight: FontWeight.w500,
                   ),
                 ),
-                Expanded(
-                  flex: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 45),
-                    child: Container(
-                        child: Form(
-                      key: _formkey,
-                      child: customTextfield(
-                        hintstyle:
-                            TextStyle(fontSize: 20, color: AppColor.colorgrey),
-                        obsecuretext: false,
-                        keyboardtype: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email id';
-                          }
-                          if (!RegExp('@.').hasMatch(value)) {
-                            return 'Please enter your valid email  ';
-                          }
-                          return null;
-                        },
-                        hintext: 'Email',
-                        controller: _EmailController,
-                        prefixicon: customIcon(
-                          iconname: Icons.email_outlined,
-                          color: AppColor.colorgrey,
-                        ),
+              ),
+              Expanded(
+                flex: 3,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 45),
+                  child: Form(
+                    key: _formkey,
+                    child: customTextfield(
+                  hintstyle:
+                      const TextStyle(fontSize: 20, color: AppColor.colorgrey),
+                  obsecuretext: false,
+                  keyboardtype: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email id';
+                    }
+                    if (!RegExp('@.').hasMatch(value)) {
+                      return 'Please enter your valid email  ';
+                    }
+                    return null;
+                  },
+                  hintext: 'Email',
+                  controller: _EmailController,
+                  prefixicon: const customIcon(
+                    iconname: Icons.email_outlined,
+                    color: AppColor.colorgrey,
+                  ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 75, right: 75),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 57,
+                        child: customelevatedbutton(
+                            onpress: () {
+                              if (_formkey.currentState!.validate()) {
+                                setState(() {
+                                  _formkey.currentState?.reset();
+                                  Navigator.pushNamed(
+                                      context, RoutesName.createacc);
+                                });
+                                return null;
+                              }
+                            },
+                            child: customText(
+                              text: 'Continue',
+                              size: 21,
+                              weight: FontWeight.w700,
+                            ),
+                            color: AppColor.splashbackgroundcolor),
                       ),
-                    )),
-                  ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 75, right: 75),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: 57,
-                          child: customelevatedbutton(
-                              onpress: () {
-                                if (_formkey.currentState!.validate()) {
-                                  setState(() {
-                                    _formkey.currentState?.reset();
-                                    Navigator.pushNamed(
-                                        context, RoutesName.Createacc);
-                                  });
-                                  return null;
-                                }
-                              },
-                              child: customText(
-                                text: 'Continue',
-                                size: 21,
-                                weight: FontWeight.w700,
-                              ),
-                              color: AppColor.splashbackgroundcolor),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ]),
-            )));
+              ),
+            ])));
   }
 }

@@ -3,6 +3,7 @@ import 'package:my_order/utilis/constants/Colors/colors.dart';
 
 class customTextfield extends StatelessWidget {
   final hintext,
+      maxline,
       keyboardtype,
       controller,
       obsecuretext,
@@ -13,12 +14,13 @@ class customTextfield extends StatelessWidget {
       contentPading,
       errorStyle,
       hintstyle,
-      onchange;
-  final dynamic? textalign;
+      onchange,
+      textalign;
+  final bool? commentfield;
 
   const customTextfield(
       {Key? key,
-      required this.hintext,
+      this.hintext,
       this.keyboardtype,
       this.controller,
       this.obsecuretext,
@@ -30,14 +32,17 @@ class customTextfield extends StatelessWidget {
       this.errorStyle,
       this.hintstyle,
       this.textalign,
-      this.onchange})
+      this.onchange,
+      this.commentfield,
+      this.maxline})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: commentfield == true ? maxline : 1,
       onChanged: onchange,
-      textAlign: textalign == null ? TextAlign.start : textalign,
+      textAlign: textalign ?? TextAlign.start,
       onEditingComplete: onEditingComplete,
       obscureText: obsecuretext,
       controller: controller,
@@ -45,29 +50,40 @@ class customTextfield extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         suffixIcon: suffixicon,
-        errorStyle: TextStyle(
+        errorStyle: const TextStyle(
           fontSize: 15.0,
         ),
         prefixIcon: prefixicon,
         contentPadding: contentPading,
         filled: true,
-        fillColor: AppColor.textfieldcolorgrey,
+        fillColor: commentfield == true
+            ? AppColor.scaffoldcolor
+            : AppColor.textfieldcolorgrey,
         hintText: hintext,
         hintStyle: hintstyle,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            borderSide: BorderSide(
+                color: commentfield == true
+                    ? AppColor.drawericonColor
+                    : Colors.white,
+                width: commentfield == true ? 2.8 : 1.0),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10.0),
+            )),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+              color: commentfield == true
+                  ? AppColor.drawericonColor
+                  : Colors.white,
+              width: commentfield == true ? 2.8 : 1.0
           ),
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
-        focusedErrorBorder: OutlineInputBorder(
+        focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2.0),
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),

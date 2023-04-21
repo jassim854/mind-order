@@ -20,10 +20,10 @@ class _addcategoryState extends State<addcategory> {
     setState(() {});
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 130,
             child: Column(
@@ -38,14 +38,12 @@ class _addcategoryState extends State<addcategory> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
-                            child: Container(
-                              child: ImageIcon(
-                                AssetImage(
-                                  "assets/accicons/drawericon.png",
-                                ),
-                                size: 37,
+                            padding: const EdgeInsets.only(left: 8, top: 20),
+                            child: const ImageIcon(
+                              AssetImage(
+                                "assets/accicons/drawericon.png",
                               ),
+                              size: 37,
                             ),
                           ));
                     }),
@@ -55,12 +53,12 @@ class _addcategoryState extends State<addcategory> {
                         height: 45,
                         width: 45,
                         decoration: BoxDecoration(
-                            color: Color(0xffFC4747),
+                            color: const Color(0xffFC4747),
                             borderRadius: BorderRadius.circular(12)),
                         child: Transform.scale(
                           scale: 0.6,
-                          child: Image(
-                            image: const AssetImage(
+                          child: const Image(
+                            image: AssetImage(
                                 "assets/accicons/sellerlogo.png"),
                           ),
                         ),
@@ -68,7 +66,7 @@ class _addcategoryState extends State<addcategory> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -76,22 +74,20 @@ class _addcategoryState extends State<addcategory> {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Container(
-                        child: Transform.scale(
-                          scale: 1.8,
-                          child: IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          japenesesellerfood(),
-                                    ));
-                              },
-                              icon: Icon(
-                                Icons.keyboard_arrow_left,
-                              )),
-                        ),
+                      child: Transform.scale(
+                        scale: 1.8,
+                        child: IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const japenesesellerfood(),
+                                  ));
+                            },
+                            icon: const Icon(
+                              Icons.keyboard_arrow_left,
+                            )),
                       ),
                     ),
                     Expanded(
@@ -101,7 +97,7 @@ class _addcategoryState extends State<addcategory> {
                           alignment: Alignment.center,
                           height: 50,
                           width: 240,
-                          child: Text(
+                          child: const Text(
                             "Add Category",
                             style: TextStyle(
                                 fontSize: 34,
@@ -154,7 +150,7 @@ class _addcategoryState extends State<addcategory> {
                               builder: ((context) {
                                 dcontext = context;
                                 return CamGall(context,
-                                    classname: imageupload());
+                                    classname: const imageupload());
                               })).whenComplete(() {
                             print("clicked");
                             setState(() {});
@@ -165,13 +161,13 @@ class _addcategoryState extends State<addcategory> {
                         child: Container(
                           width: 50,
                           height: 50,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.red,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(15),
                                   topRight: Radius.circular(15),
                                   bottomRight: Radius.circular(15))),
-                          child: Icon(
+                          child: const Icon(
                             Icons.add_sharp,
                             color: Colors.white,
                             size: 45,
@@ -192,7 +188,7 @@ class _addcategoryState extends State<addcategory> {
             child: Flex(
               direction: Axis.vertical,
               children: [
-                Container(
+                SizedBox(
                   height: 400,
                   width: 350,
                   child: Column(
@@ -201,7 +197,7 @@ class _addcategoryState extends State<addcategory> {
                         child: Container(
                           height: 30,
                           width: 30,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                     "assets/accicons/bookicon.png",
@@ -209,14 +205,14 @@ class _addcategoryState extends State<addcategory> {
                                   fit: BoxFit.cover)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Flexible(
-                          child: Container(
+                          child: SizedBox(
                         height: 50,
                         width: 320,
-                        child: TextField(
+                        child: const TextField(
                           textAlign: TextAlign.center,
                           cursorHeight: 10,
                           maxLines: 1,
@@ -229,10 +225,10 @@ class _addcategoryState extends State<addcategory> {
                           ),
                         ),
                       )),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Container(
+                      SizedBox(
                         height: 50,
                         width: 170,
                         child: ElevatedButton(
@@ -244,23 +240,23 @@ class _addcategoryState extends State<addcategory> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => MenuIcon(),
+                                    builder: (context) => const MenuIcon(),
                                   ));
                             },
-                            child: Text(
+                            child: const Text(
                               "Set Icon",
                               style: TextStyle(
                                   fontSize: 25, fontWeight: FontWeight.w500),
                             )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Flexible(
                         child: Container(
                           height: 30,
                           width: 30,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                     "assets/accicons/descicon.png",
@@ -268,14 +264,14 @@ class _addcategoryState extends State<addcategory> {
                                   fit: BoxFit.cover)),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Flexible(
-                          child: Container(
+                          child: SizedBox(
                         height: 50,
                         width: 320,
-                        child: TextField(
+                        child: const TextField(
                           textAlign: TextAlign.center,
                           cursorHeight: 10,
                           maxLines: 1,
@@ -289,10 +285,10 @@ class _addcategoryState extends State<addcategory> {
                         ),
                       )),
                       Flexible(
-                          child: Container(
+                          child: SizedBox(
                         height: 40,
                         width: 320,
-                        child: TextField(
+                        child: const TextField(
                           textAlign: TextAlign.center,
                           cursorHeight: 10,
                           maxLines: 1,
@@ -300,10 +296,10 @@ class _addcategoryState extends State<addcategory> {
                         ),
                       )),
                       Flexible(
-                          child: Container(
+                          child: SizedBox(
                         height: 40,
                         width: 320,
-                        child: TextField(
+                        child: const TextField(
                           textAlign: TextAlign.center,
                           cursorHeight: 10,
                           maxLines: 1,
@@ -311,10 +307,10 @@ class _addcategoryState extends State<addcategory> {
                         ),
                       )),
                       Flexible(
-                          child: Container(
+                          child: SizedBox(
                         height: 40,
                         width: 320,
-                        child: TextField(
+                        child: const TextField(
                           textAlign: TextAlign.center,
                           cursorHeight: 10,
                           maxLines: 1,

@@ -23,10 +23,10 @@ class _imageuploadState extends State<imageupload> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: Color(0xffFFFFFF),
+      backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 130,
             child: Column(
@@ -41,14 +41,12 @@ class _imageuploadState extends State<imageupload> {
                             Scaffold.of(context).openDrawer();
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(left: 8, top: 20),
-                            child: Container(
-                              child: ImageIcon(
-                                AssetImage(
-                                  "assets/accicons/drawericon.png",
-                                ),
-                                size: 37,
+                            padding: const EdgeInsets.only(left: 8, top: 20),
+                            child: const ImageIcon(
+                              AssetImage(
+                                "assets/accicons/drawericon.png",
                               ),
+                              size: 37,
                             ),
                           ));
                     }),
@@ -58,12 +56,12 @@ class _imageuploadState extends State<imageupload> {
                         height: 45,
                         width: 45,
                         decoration: BoxDecoration(
-                            color: Color(0xffFC4747),
+                            color: const Color(0xffFC4747),
                             borderRadius: BorderRadius.circular(12)),
                         child: Transform.scale(
                           scale: 0.6,
-                          child: Image(
-                            image: const AssetImage(
+                          child: const Image(
+                            image: AssetImage(
                                 "assets/accicons/sellerlogo.png"),
                           ),
                         ),
@@ -71,7 +69,7 @@ class _imageuploadState extends State<imageupload> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -79,23 +77,21 @@ class _imageuploadState extends State<imageupload> {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Container(
-                        child: Transform.scale(
-                          scale: 1.8,
-                          child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => addcategory(),
-                                      ));
-                                });
-                              },
-                              icon: Icon(
-                                Icons.keyboard_arrow_left,
-                              )),
-                        ),
+                      child: Transform.scale(
+                        scale: 1.8,
+                        child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const addcategory(),
+                                    ));
+                              });
+                            },
+                            icon: const Icon(
+                              Icons.keyboard_arrow_left,
+                            )),
                       ),
                     ),
                     Expanded(
@@ -104,7 +100,7 @@ class _imageuploadState extends State<imageupload> {
                         child: Container(
                           alignment: Alignment.center,
                           height: 50,
-                          child: Text(
+                          child: const Text(
                             "Image Upload",
                             style: TextStyle(
                                 fontSize: 34,
@@ -142,16 +138,16 @@ class _imageuploadState extends State<imageupload> {
               ),
             ),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Transform.translate(
-            offset: Offset(0, -5),
+            offset: const Offset(0, -5),
             child: Center(
-              child: Container(
+              child: SizedBox(
                 height: 20,
                 width: 130,
-                child: Text(
+                child: const Text(
                   "Pinch to Zoom",
                   style: TextStyle(
                       fontSize: 18,
@@ -161,42 +157,38 @@ class _imageuploadState extends State<imageupload> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Center(
-            child: Container(
-              child: FittedBox(
-                child: Text(
-                  "Photo Upload Guidelines",
-                  style: TextStyle(
-                      fontSize: 21,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: Container(
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Text(
-                  "The image can't be blurry, it can't\ninclude text or logo and there\nshould be space around the food.",
-                  textAlign: TextAlign.justify,
-                  textScaleFactor: 1.1,
-                  style: TextStyle(
-                    fontSize: 18,
+            child: const FittedBox(
+              child: Text(
+                "Photo Upload Guidelines",
+                style: TextStyle(
+                    fontSize: 21,
                     color: Colors.black,
-                  ),
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: const FittedBox(
+              fit: BoxFit.fill,
+              child: Text(
+                "The image can't be blurry, it can't\ninclude text or logo and there\nshould be space around the food.",
+                textAlign: TextAlign.justify,
+                textScaleFactor: 1.1,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
                 ),
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Center(
@@ -207,10 +199,8 @@ class _imageuploadState extends State<imageupload> {
                   imageFile = null;
                 });
               },
-              child: Container(
-                child: Transform.scale(
-                    scale: 2, child: Icon(Icons.highlight_remove_rounded)),
-              ),
+              child: Transform.scale(
+                  scale: 2, child: const Icon(Icons.highlight_remove_rounded)),
             ),
           ),
         ],

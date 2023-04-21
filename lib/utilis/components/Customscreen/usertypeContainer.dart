@@ -26,7 +26,7 @@ class usertypecontainer extends StatelessWidget {
             BoxShadow(
                 color: AppColor.colorred.withOpacity(0.3),
                 spreadRadius: 0.1,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
                 blurRadius: 12)
           ]),
       child: Column(

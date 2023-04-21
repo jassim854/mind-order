@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
-import 'package:my_order/view/BuyerScreen/splashscreens/onboardscreen_4.dart';
+
 import 'package:my_order/view/SellerScreen/Register/usertype.dart';
 
 import '../../../utilis/components/Customscreen/CustomSplashScreen.dart';

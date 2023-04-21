@@ -22,11 +22,11 @@ class _CamGallState extends State<CamGall> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Container(
+      child: SizedBox(
         height: 170,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               width: 140,
               height: 55,
               child: ElevatedButton(
@@ -39,14 +39,14 @@ class _CamGallState extends State<CamGall> {
                           borderRadius: BorderRadius.circular(15))),
                   child: Ink(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
+                        gradient: const LinearGradient(colors: [
                           Color.fromARGB(255, 3, 0, 196),
                           Color.fromARGB(255, 10, 133, 255)
                         ]),
                         borderRadius: BorderRadius.circular(15)),
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         "Gallery",
                         style: TextStyle(
                             fontSize: 24, fontStyle: FontStyle.italic),
@@ -54,13 +54,11 @@ class _CamGallState extends State<CamGall> {
                     ),
                   )),
             ),
-            Container(
-              child: Text(
-                "OR",
-                style: TextStyle(fontSize: 30),
-              ),
+            const Text(
+              "OR",
+              style: TextStyle(fontSize: 30),
             ),
-            Container(
+            SizedBox(
               width: 140,
               height: 55,
               child: ElevatedButton(
@@ -73,14 +71,14 @@ class _CamGallState extends State<CamGall> {
                           borderRadius: BorderRadius.circular(15))),
                   child: Ink(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
+                        gradient: const LinearGradient(colors: [
                           Color.fromARGB(255, 3, 0, 196),
                           Color.fromARGB(255, 10, 133, 255)
                         ]),
                         borderRadius: BorderRadius.circular(15)),
                     child: Container(
                       alignment: Alignment.center,
-                      child: Text(
+                      child: const Text(
                         "Camera",
                         style: TextStyle(
                             fontSize: 24, fontStyle: FontStyle.italic),

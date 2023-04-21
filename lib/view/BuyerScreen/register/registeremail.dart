@@ -51,7 +51,7 @@ class _CreateaccState extends State<regacc> {
         child: Scaffold(
             backgroundColor: AppColor.scaffoldcolor,
             body: Column(children: [
-              Flexible(
+              const Flexible(
                 flex: 2,
                 child: customlogo(
                   textcolor: AppColor.headertextcolor,
@@ -63,146 +63,125 @@ class _CreateaccState extends State<regacc> {
               Flexible(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20, bottom: 10),
-                  child: Container(
-
-                      // color: Colors.orange,
-                      child: FittedBox(
+                  child: FittedBox(
                     child: customText(
-                      text: "You 're there",
-                      size: 30,
-                      textColor: AppColor.splashbackgroundcolor,
-                      weight: FontWeight.w600,
+                  text: "You 're there",
+                  size: 30,
+                  textColor: AppColor.splashbackgroundcolor,
+                  weight: FontWeight.w600,
                     ),
-                  )),
+                  ),
                 ),
               ),
               Flexible(
-                child: Container(
-
-                    // color: Colors.blue,
-                    child: FittedBox(
+                child: FittedBox(
                   child: customText(
-                    text: "Create My Order Account",
-                    size: 23,
-                    textColor: AppColor.headertextcolor,
-                    weight: FontWeight.w600,
+                text: "Create My Order Account",
+                size: 23,
+                textColor: AppColor.headertextcolor,
+                weight: FontWeight.w600,
                   ),
-                )),
+                ),
               ),
               Flexible(
                 flex: 6,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Container(
-                    child: Form(
-                      key: _formkey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Flexible(
-                            child: Container(
-                              // color: Colors.red,
+                  child: Form(
+                    key: _formkey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Flexible(
+                          child: customTextfield(
+                            hintstyle: const TextStyle(
+                                fontSize: 20, color: AppColor.colorgrey),
+                            obsecuretext: false,
+                            keyboardtype: TextInputType.emailAddress,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your email id';
+                              }
+                              if (!RegExp('@.').hasMatch(value)) {
+                                return 'Please enter your valid email  ';
+                              }
+                              return null;
+                            },
+                            hintext: 'Email',
+                            controller: _EmailController,
+                            prefixicon: const customIcon(
+                              iconname: Icons.email_outlined,
+                              color: AppColor.colorgrey,
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: customTextfield(
+                            hintstyle: const TextStyle(
+                                fontSize: 20, color: AppColor.colorgrey),
+                            obsecuretext: isvisible ? false : true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your Password';
+                              }
 
-                              child: customTextfield(
-                                hintstyle: TextStyle(
-                                    fontSize: 20, color: AppColor.colorgrey),
-                                obsecuretext: false,
-                                keyboardtype: TextInputType.emailAddress,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your email id';
-                                  }
-                                  if (!RegExp('@.').hasMatch(value)) {
-                                    return 'Please enter your valid email  ';
-                                  }
-                                  return null;
+                              return null;
+                            },
+                            hintext: "Password",
+                            controller: _passwordController,
+                            prefixicon: const customImageIcon(
+                                img: images.passwordicon),
+                            suffixicon: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    isvisible = !isvisible;
+                                  });
                                 },
-                                hintext: 'Email',
-                                controller: _EmailController,
-                                prefixicon: customIcon(
-                                  iconname: Icons.email_outlined,
-                                  color: AppColor.colorgrey,
-                                ),
-                              ),
-                            ),
+                                child: customImageIcon(
+                                  img: images.password2icon,
+                                  color:
+                                      isvisible ? Colors.red : Colors.black,
+                                )),
                           ),
-                          Flexible(
-                            child: Container(
-                              // color: Colors.red,
+                        ),
+                        Flexible(
+                          child: customTextfield(
+                              hintstyle: const TextStyle(
+                                  fontSize: 20, color: AppColor.colorgrey),
+                              obsecuretext: false,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your Pin Location';
+                                }
 
-                              child: customTextfield(
-                                hintstyle: TextStyle(
-                                    fontSize: 20, color: AppColor.colorgrey),
-                                obsecuretext: isvisible ? false : true,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter your Password';
-                                  }
+                                return null;
+                              },
+                              hintext: "Pin Location",
+                              controller: _pinlocationController,
+                              prefixicon: const customIcon(
+                                iconname: Icons.location_on_outlined,
+                              )),
+                        ),
+                        Flexible(
+                          child: customTextfield(
+                              keyboardtype: TextInputType.number,
+                              hintstyle: const TextStyle(
+                                  fontSize: 20,
+                                  color: AppColor.colorgrey),
+                              obsecuretext: false,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter Phone Number';
+                                }
 
-                                  return null;
-                                },
-                                hintext: "Password",
-                                controller: _passwordController,
-                                prefixicon: customImageIcon(
-                                    imageicon: images.passwordicon),
-                                suffixicon: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        isvisible = !isvisible;
-                                      });
-                                    },
-                                    child: customImageIcon(
-                                      imageicon: images.password2icon,
-                                      color:
-                                          isvisible ? Colors.red : Colors.black,
-                                    )),
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: Container(
-                              child: customTextfield(
-                                  hintstyle: TextStyle(
-                                      fontSize: 20, color: AppColor.colorgrey),
-                                  obsecuretext: false,
-                                  validator: (value) {
-                                    if (value == null || value.isEmpty) {
-                                      return 'Please enter your Pin Location';
-                                    }
-
-                                    return null;
-                                  },
-                                  hintext: "Pin Location",
-                                  controller: _pinlocationController,
-                                  prefixicon: customIcon(
-                                    iconname: Icons.location_on_outlined,
-                                  )),
-                            ),
-                          ),
-                          Flexible(
-                            child: Container(
-                                // color: Colors.red,
-
-                                child: customTextfield(
-                                    keyboardtype: TextInputType.number,
-                                    hintstyle: TextStyle(
-                                        fontSize: 20,
-                                        color: AppColor.colorgrey),
-                                    obsecuretext: false,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Please enter Phone Number';
-                                      }
-
-                                      return null;
-                                    },
-                                    hintext: "Phone",
-                                    controller: _phoneController,
-                                    prefixicon: customIcon(
-                                        iconname: Icons.phone_android))),
-                          ),
-                        ],
-                      ),
+                                return null;
+                              },
+                              hintext: "Phone",
+                              controller: _phoneController,
+                              prefixicon: const customIcon(
+                                  iconname: Icons.phone_android)),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -242,13 +221,13 @@ class _CreateaccState extends State<regacc> {
                   setState(() {
                     _formkey.currentState?.reset();
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => locations()));
+                        MaterialPageRoute(builder: (context) => const locations()));
                   });
                 } else {
                   return null;
                 }
               },
-              child: Icon(
+              child: const Icon(
                 Icons.check_sharp,
                 size: 25,
                 color: Colors.white,

@@ -15,9 +15,9 @@ class locations extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xffffffff),
+            backgroundColor: const Color(0xffffffff),
             body: Column(children: [
-              Flexible(
+              const Flexible(
                   flex: 2,
                   child: customlogo(
                     textcolor: AppColor.headertextcolor,
@@ -26,7 +26,7 @@ class locations extends StatelessWidget {
                   )),
 
               Expanded(
-                child: Container(
+                child: SizedBox(
                     width: 300,
                     child: type == 'Buyer'
                         ? FittedBox(
@@ -52,9 +52,7 @@ class locations extends StatelessWidget {
               // ),
               Expanded(
                 flex: 3,
-                child: Container(
-                  child: Image(image: AssetImage(images.locationImageIcon)),
-                ),
+                child: const Image(image: AssetImage(images.locationImageIcon)),
               ),
 
               Padding(

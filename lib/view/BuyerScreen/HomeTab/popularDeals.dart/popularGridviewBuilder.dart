@@ -17,7 +17,7 @@ class popularGridviewBuilder extends StatelessWidget {
         mainAxisSpacing: 40,
       ),
       itemBuilder: (context, index) {
-        return Container(
+        return SizedBox(
           height: 150,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -27,16 +27,14 @@ class popularGridviewBuilder extends StatelessWidget {
                 flex: 3,
                 child: Container(
                   height: 80,
-                  decoration: BoxDecoration(color: AppColor.textfieldcolorgrey),
+                  decoration: const BoxDecoration(color: AppColor.textfieldcolorgrey),
                 ),
               ),
               Flexible(
-                child: Container(
-                  child: FittedBox(
-                    child: customText(
-                      text: 'E 18',
-                      size: 14,
-                    ),
+                child: FittedBox(
+                  child: customText(
+                    text: 'E 18',
+                    size: 14,
                   ),
                 ),
               )

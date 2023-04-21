@@ -39,64 +39,65 @@ class _popularScreenState extends State<popularScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xffffffff),
-        drawer: mydrawer(),
+        backgroundColor: const Color(0xffffffff),
+        drawer: const mydrawer(),
         body: Column(children: [
-          Flexible(child: customhomeLogo()),
+          const Flexible(
+              child: customhomeLogo(
+            backarrow: false,
+            centerText: false,
+          )),
           Flexible(
-            child: Container(
-              child: FittedBox(
-                child: customText(
-                    text: "Popular Deals",
-                    size: 30,
-                    textColor: AppColor.splashbackgroundcolor,
-                    weight: FontWeight.bold),
-              ),
+            child: FittedBox(
+              child: customText(
+                  text: "Popular Deals",
+                  size: 30,
+                  textColor: AppColor.splashbackgroundcolor,
+                  weight: FontWeight.bold),
             ),
           ),
           Flexible(
             flex: 2,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: Container(
-                  child: customTextfield(
-                      hintstyle: TextStyle(
-                          fontSize: 20, color: AppColor.headertextcolor),
-                      obsecuretext: false,
-                      hintext: 'Search',
-                      controller: _SearchController,
-                      prefixicon: Transform.scale(
-                        scale: 1.5,
-                        child: customIcon(
-                          iconname: Icons.search_sharp,
-                          color: AppColor.headertextcolor,
-                        ),
+              child: customTextfield(
+                  hintstyle: const TextStyle(
+                      fontSize: 20, color: AppColor.headertextcolor),
+                  obsecuretext: false,
+                  hintext: 'Search',
+                  controller: _SearchController,
+                  prefixicon: Transform.scale(
+                    scale: 1.5,
+                    child: const customIcon(
+                      iconname: Icons.search_sharp,
+                      color: AppColor.headertextcolor,
+                    ),
+                  ),
+                  suffixicon: customPopupMenuButton(
+                    img: images.popupicon,
+                    items: [
+                      PopupMenuItem(
+                        child: customText(text: "Price"),
+                        value: 0,
                       ),
-                      suffixicon: customPopupMenuButton(
-                        img: images.popupicon,
-                        items: [
-                          PopupMenuItem(
-                            child: Text("Price"),
-                            value: 0,
-                          ),
-                          PopupMenuItem(
-                            child: Text("Distance"),
-                            value: 1,
-                          ),
-                          PopupMenuItem(
-                            child: Text("timee"),
-                            value: 2,
-                          ),
-                          PopupMenuItem(
-                            child: Text("Vlog"),
-                            value: 3,
-                          ),
-                          PopupMenuItem(
-                            child: Text("Resturnats"),
-                            value: 4,
-                          )
-                        ],
-                      ))),
+                      PopupMenuItem(
+                        child: customText(text: "Distance"),
+                        value: 1,
+                      ),
+                      PopupMenuItem(
+                        child: customText(text: "timee"),
+                        value: 2,
+                      ),
+                      PopupMenuItem(
+                        child: customText(text: "Vlog"),
+                        value: 3,
+                      ),
+                      PopupMenuItem(
+                        child: customText(text: "Resturnats"),
+                        value: 4,
+                      )
+                    ],
+                  )),
             ),
           ),
           Flexible(
@@ -117,16 +118,16 @@ class _popularScreenState extends State<popularScreen> {
             flex: 4,
             child: Padding(
               padding: const EdgeInsets.only(top: 26, left: 20, right: 20),
-              child: Container(height: 433, child: popularGridviewBuilder()),
+              child: Container(height: 433, child: const popularGridviewBuilder()),
             ),
           ),
         ]),
-        bottomNavigationBar: bottomAppbar(),
+        bottomNavigationBar: const bottomAppbar(),
         floatingActionButton: customFloatingButton(
             onpress: () {},
             child: Transform.scale(
                 scale: 1.7,
-                child: customIcon(
+                child: const customIcon(
                   iconname: Icons.search,
                   color: AppColor.colorwhite,
                 ))),

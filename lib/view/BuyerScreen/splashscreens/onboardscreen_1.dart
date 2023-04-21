@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_order/utilis/components/Customscreen/CustomSplashScreen.dart';
 
-import 'package:my_order/utilis/components/Customscreen/header.dart';
 
-import 'package:my_order/utilis/components/customwidgets/customRoundContainer.dart';
-import 'package:my_order/utilis/components/customwidgets/customtextbutton.dart';
-import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
-import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 import 'package:my_order/utilis/constants/Colors/colors.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
 

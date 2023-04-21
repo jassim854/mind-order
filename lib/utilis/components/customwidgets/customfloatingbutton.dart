@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/utilis/constants/Colors/colors.dart';
 
 class customFloatingButton extends StatelessWidget {
   final onpress;
@@ -10,10 +11,21 @@ class customFloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: onpress,
-      child: child,
-      backgroundColor: Colors.red,
+    return Container(
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+                color: AppColor.splashbackgroundcolor.withOpacity(0.8),
+                spreadRadius: 1.2,
+                blurRadius: 25.0)
+          ],
+          border: Border.all(color: AppColor.scaffoldcolor, width: 2.5)),
+      child: FloatingActionButton(
+        onPressed: onpress,
+        child: child,
+        backgroundColor: AppColor.splashbackgroundcolor,
+      ),
     );
   }
 }

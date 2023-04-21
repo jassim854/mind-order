@@ -33,24 +33,21 @@ class customhomeCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: FittedBox(
-                child: customText(
-                    text: text1,
-                    size: size1,
-                    textColor: textcolor1,
-                    textalignment: TextAlign.center,
-                    weight: FontWeight.bold),
-              ),
+            FittedBox(
+              child: customText(
+                  text: text1,
+                  size: size1,
+                  textColor: textcolor1,
+                  textalignment: TextAlign.center,
+                  weight: FontWeight.bold),
             ),
-            Container(
-                child: FittedBox(
+            FittedBox(
               child: customTextButton(
-                onclick: onClick,
-                title: title,
-                color: buttoncolor,
+            onclick: onClick,
+            title: title,
+            textcolor: buttoncolor,
               ),
-            ))
+            )
           ],
         ),
       ),

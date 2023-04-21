@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
-import 'package:my_order/utilis/constants/Colors/colors.dart';
-import 'package:my_order/view/SellerScreen/Register/usertype.dart';
 
 class customTextButton extends StatelessWidget {
   final VoidCallback onclick;
-  final String title;
-
-  final color;
+  final title;
+  final textcolor, textsize, weight;
+  final backgroundcolor, child;
   customTextButton(
-      {Key? key, required this.onclick, required this.title, this.color})
+      {
+    Key? key,
+    required this.onclick,
+    this.title,
+    this.textcolor,
+    this.textsize,
+    this.weight,
+    this.backgroundcolor,
+    this.child,
+  })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
+        style: TextButton.styleFrom(backgroundColor: backgroundcolor),
         onPressed: onclick,
-        child: customText(
+        child: child ??
+            customText(
           text: title,
-          size: 17,
-          textColor: color,
+              size: textsize ?? 18.0,
+              textColor: textcolor,
           textalignment: TextAlign.justify,
-          weight: FontWeight.bold,
+              weight: weight ?? FontWeight.bold,
         ));
   }
 }

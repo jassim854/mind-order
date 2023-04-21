@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:my_order/utilis/components/Customscreen/header.dart';
-import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 
 import '../../../view/SellerScreen/Register/usertype.dart';
 import '../../constants/Colors/colors.dart';
@@ -20,7 +19,7 @@ class CustomSplashScreens extends StatelessWidget {
 
   final onboardscreen;
 
-  CustomSplashScreens({
+  const CustomSplashScreens({
     Key? key,
     required this.oncontainer,
     required this.onskip,
@@ -74,10 +73,10 @@ class CustomSplashScreens extends StatelessWidget {
                                   BoxShadow(
                                     color: type == 'Seller'
                                         ? AppColor.colorred.withOpacity(0.3)
-                                        : Color(0xff0000000),
+                                        : const Color(0xff0000000),
                                     spreadRadius: type == 'Seller' ? 0.1 : 0.0,
                                     offset: type == 'Seller'
-                                        ? Offset(0, 3)
+                                        ? const Offset(0, 3)
                                         : Offset.zero,
                                     blurRadius: type == 'Seller' ? 12 : 0,
                                   )
@@ -86,37 +85,35 @@ class CustomSplashScreens extends StatelessWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(top: 20),
-                                  child: Container(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          customRoundContainer(
-                                              containerColor: splashcont1),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 35),
-                                            child: customRoundContainer(
-                                                containerColor: splashcont2),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 35),
-                                            child: customRoundContainer(
-                                                containerColor: splashcont3),
-                                          ),
-                                        ]),
-                                  ),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        customRoundContainer(
+                                            containerColor: splashcont1),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 35),
+                                          child: customRoundContainer(
+                                              containerColor: splashcont2),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 35),
+                                          child: customRoundContainer(
+                                              containerColor: splashcont3),
+                                        ),
+                                      ]),
                                 ),
                                 Expanded(
                                   child: onboardscreen == 'first'
-                                      ? Padding(
+                                      ? const Padding(
                                           padding: EdgeInsets.only(top: 160))
                                       : Padding(
                                           padding:
                                               const EdgeInsets.only(top: 20),
-                                          child: Container(
+                                          child: SizedBox(
                                             height: 140,
                                             width: 200,
                                             child:
@@ -128,7 +125,7 @@ class CustomSplashScreens extends StatelessWidget {
                                     child: Padding(
                                   padding: const EdgeInsets.only(top: 27),
                                   child: Column(children: [
-                                    Container(
+                                    SizedBox(
                                       height: 50,
                                       width: width * 0.45,
                                       // color: Colors.amber,
@@ -142,7 +139,7 @@ class CustomSplashScreens extends StatelessWidget {
                                     // SizedBox(
                                     //   height: height * 0.01,
                                     // ),
-                                    Container(
+                                    SizedBox(
                                       // color: Colors.blue,
                                       height: 80,
                                       child: FittedBox(
@@ -185,7 +182,7 @@ class CustomSplashScreens extends StatelessWidget {
         floatingActionButton: customTextButton(
             onclick: onskip,
             title: "Skip",
-            color: type == 'Buyer'
+            textcolor: type == 'Buyer'
                 ? AppColor.colorwhite
                 : AppColor.splashbackgroundcolor),
       ),
