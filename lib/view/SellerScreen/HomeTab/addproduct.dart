@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/utilis/components/Customscreen/header.dart';
+import 'package:my_order/utilis/constants/Routes/route_names.dart';
+import 'package:my_order/view/BuyerScreen/HomeTab/drawerScreen/drawerscreen.dart';
 
-import '../../../utilis/services/CamGalleryAccess/galleryaccess.dart';
-import 'JapeneseFood.dart';
+import 'japeneseSellerFood.dart';
 
-class addproduct extends StatefulWidget {
+class AddProduct extends StatefulWidget {
   @override
-  State<addproduct> createState() => _addproductState();
+  State<AddProduct> createState() => _AddProductState();
 }
 
-class _addproductState extends State<addproduct> {
+class _AddProductState extends State<AddProduct> {
+  var imageFile;
   var check = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      drawer: mydrawer(),
       backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
@@ -22,44 +26,7 @@ class _addproductState extends State<addproduct> {
             height: 130,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Builder(builder: (context) {
-                      return GestureDetector(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 20),
-                            child: const ImageIcon(
-                              AssetImage(
-                                "assets/accicons/drawericon.png",
-                              ),
-                              size: 37,
-                            ),
-                          ));
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20, top: 10),
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffFC4747),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Transform.scale(
-                          scale: 0.6,
-                          child: const Image(
-                            image: AssetImage(
-                                "assets/accicons/sellerlogo.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                customhomeLogo(backarrow: false, centerText: false),
                 const SizedBox(
                   height: 10,
                 ),
@@ -72,12 +39,7 @@ class _addproductState extends State<addproduct> {
                         scale: 1.8,
                         child: IconButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const japenesesellerfood(),
-                                  ));
+                              Navigator.of(context).pop();
                             },
                             icon: const Icon(
                               Icons.keyboard_arrow_left,
@@ -113,21 +75,23 @@ class _addproductState extends State<addproduct> {
                 children: [
                   Expanded(
                       child: Center(
-                          child: imageFile != null
-                              ? Container(
-                                  width: 320,
-                                  height: 190,
-                                  color: Colors.grey,
-                                  child: InteractiveViewer(
-                                      child: Image.file(
-                                    imageFile,
-                                    fit: BoxFit.fill,
-                                  )))
-                              : Container(
-                                  width: 320,
-                                  height: 190,
-                                  color: Colors.grey,
-                                ))),
+                    child: imageFile != null
+                        ? Container(
+                            margin: EdgeInsets.only(left: 40, right: 40),
+                            width: double.infinity,
+                            height: 190,
+                            color: Colors.grey,
+                            child: InteractiveViewer(
+                                child: Image.file(
+                              imageFile,
+                              fit: BoxFit.fill,
+                            )))
+                        : Container(
+                            margin: EdgeInsets.only(left: 40, right: 40),
+                            height: 190,
+                            color: Colors.grey,
+                          ),
+                  )),
                 ],
               ),
               Row(
@@ -137,16 +101,10 @@ class _addproductState extends State<addproduct> {
                       child: Padding(
                           padding: const EdgeInsets.only(top: 160),
                           child: InkWell(
-                            onTap: () {
-                              print("yess");
-                              showDialog(
-                                  context: context,
-                                  builder: ((context) {
-                                    return CamGall(
-                                      context,
-                                      classname: addproduct(),
-                                    );
-                                  }));
+                            onTap: () async {
+                              imageFile = await Navigator.pushNamed(
+                                  context, RoutesName.imageUploadView);
+                              setState(() {});
                             },
                             child: Center(
                               child: Container(
@@ -192,7 +150,7 @@ class _addproductState extends State<addproduct> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    "assets/accicons/product.png",
+                                    "assets/images/accicons/product.png",
                                   ),
                                   fit: BoxFit.cover)),
                         ),
@@ -302,7 +260,7 @@ class _addproductState extends State<addproduct> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    "assets/accicons/descicon.png",
+                                    "assets/images/accicons/descicon.png",
                                   ),
                                   fit: BoxFit.cover)),
                         ),

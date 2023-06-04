@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:my_order/Helper/basehelper.dart';
 import 'package:my_order/utilis/components/Customscreen/header.dart';
 import 'package:my_order/utilis/components/customwidgets/customRoundContainer.dart';
 import 'package:my_order/utilis/components/customwidgets/customTextField.dart';
@@ -8,7 +9,7 @@ import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 import 'package:my_order/utilis/constants/Colors/colors.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
-import 'package:my_order/utilis/services/CamGalleryAccess/galleryaccess.dart';
+import 'package:my_order/view/SellerScreen/HomeTab/japeneseSellerFood.dart';
 
 import '../../../utilis/components/customwidgets/customElevatedButton.dart';
 import '../HomeTab/SortCatagory.dart';
@@ -22,6 +23,7 @@ class stepsleft extends StatefulWidget {
 
 class _stepsleftState extends State<stepsleft> {
   List days = [false, false, false, false, false, false, false];
+  var imageFile;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,17 +56,9 @@ class _stepsleftState extends State<stepsleft> {
               padding: const EdgeInsets.only(
                   left: 25, right: 25, top: 40, bottom: 20),
               child: InkWell(
-                onTap: () {
-                  setState(() {
-                    showDialog(
-                        context: context,
-                        builder: ((context) {
-                          return CamGall(context, classname: const stepsleft());
-                        })).whenComplete(() {
-                      print("clicked");
-                      setState(() {});
-                    });
-                  });
+                onTap: () async {
+                  imageFile = await BaseHelper.imagePickerSheet(context);
+                  setState(() {});
                 },
                 child: SizedBox(
                     height: 140,
@@ -175,11 +169,11 @@ class _stepsleftState extends State<stepsleft> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: FittedBox(
-            child: customText(
-              text: "Days Open",
-              size: 22,
-              weight: FontWeight.w500,
-            ),
+                child: customText(
+                  text: "Days Open",
+                  size: 22,
+                  weight: FontWeight.w500,
+                ),
               ),
             ),
           ),
@@ -286,7 +280,11 @@ class _stepsleftState extends State<stepsleft> {
                       height: 57,
                       child: customelevatedbutton(
                         onpress: () {
-                          Navigator.pushNamed(context, RoutesName.sortcategory);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => japenesesellerfood(),
+                              ));
                         },
                         child: FittedBox(
                           child: customText(

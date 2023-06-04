@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Helper/basehelper.dart';
 import 'package:my_order/utilis/components/customwidgets/customtextbutton.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
@@ -25,93 +26,89 @@ class _phonenoState extends State<phoneno> {
     var click;
     return SafeArea(
         child: Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: const Color(0xffffffff),
             body: Column(children: [
-              const Flexible(
-                flex: 3,
-                child: customlogo(
-                    textcolor: AppColor.headertextcolor,
-                    splashscreen: false,
-                    backarrow: true),
-              ),
-              Flexible(
-                child: Container(
-                    alignment: Alignment.bottomCenter,
-                    padding: const EdgeInsets.only(top: 10),
-                    // color: Colors.orange,
-                    child: FittedBox(
-                      child: customText(
-                        text: "Validate Number",
-                        textColor: AppColor.splashbackgroundcolor,
-                        size: 30,
-                        textalignment: TextAlign.center,
-                        weight: FontWeight.w600,
-                      ),
-                    )),
-              ),
-              Flexible(
-                child: Container(
-                    padding: const EdgeInsets.only(top: 10),
+              customlogo(
+                  textcolor: AppColor.headertextcolor,
+                  splashscreen: false,
+                  backarrow: true),
+              if (MediaQuery.of(context).viewInsets.bottom < 100)
+                Column(
+                  children: [
+                    Container(
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.only(top: 10),
+                        // color: Colors.orange,
+                        child: FittedBox(
+                          child: customText(
+                            text: "Validate Number",
+                            textColor: AppColor.splashbackgroundcolor,
+                            size: 30,
+                            textalignment: TextAlign.center,
+                            weight: FontWeight.w600,
+                          ),
+                        )),
+                    Container(
+                        padding: const EdgeInsets.only(top: 10),
 
-                    // color: Colors.blue,
-                    child: FittedBox(
-                      child: customText(
-                        text: "Enter the Confirmation Code",
-                        size: 23,
-                        textColor: AppColor.headertextcolor,
-                        weight: FontWeight.w500,
-                      ),
-                    )),
+                        // color: Colors.blue,
+                        child: FittedBox(
+                          child: customText(
+                            text: "Enter the Confirmation Code",
+                            size: 23,
+                            textColor: AppColor.headertextcolor,
+                            weight: FontWeight.w500,
+                          ),
+                        )),
+                  ],
+                ),
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                alignment: Alignment.center,
+                child: Image(
+                  image: AssetImage(images.messageImageIcon),
+                  height: MediaQuery.of(context).viewInsets.bottom > 100
+                      ? 200
+                      : 300,
+                ),
               ),
-              Flexible(
-                flex: 5,
-                child: Container(
+              Container(
                   padding: const EdgeInsets.only(
-                    top: 10,
+                    left: 15,
+                    right: 15,
                   ),
-                  alignment: Alignment.center,
-                  child: const Image(image: AssetImage(images.messageImageIcon)),
-                ),
-              ),
-              Flexible(
-                flex: 2,
-                child: Container(
-                    padding: const EdgeInsets.only(
-                      left: 15,
-                      right: 15,
-                    ),
-                    alignment: Alignment.bottomCenter,
-                    child: Form(
-                      key: _formkey,
-                      child: customTextfield(
-                        textalign: TextAlign.center,
-                        hintstyle:
-                            const TextStyle(fontSize: 20, color: AppColor.colorgrey),
-                        obsecuretext: false,
-                        keyboardtype: TextInputType.number,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your valid number';
-                          }
+                  alignment: Alignment.bottomCenter,
+                  child: Form(
+                    key: _formkey,
+                    child: customTextfield(
+                      textalign: TextAlign.center,
+                      hintstyle: const TextStyle(
+                          fontSize: 20, color: AppColor.colorgrey),
+                      obsecuretext: false,
+                      keyboardtype: TextInputType.number,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your valid number';
+                        }
 
-                          return null;
-                        },
-                        hintext: 'Enter Verification Code',
-                        controller: _verificationController,
-                      ),
+                        return null;
+                      },
+                      hintext: 'Enter Verification Code',
+                      controller: _verificationController,
+                    ),
+                  )),
+              Padding(
+                padding: const EdgeInsets.only(),
+                child: Container(
+                    alignment: Alignment.topCenter,
+                    child: customTextButton(
+                      onclick: () {},
+                      title: 'Resend Code',
+                      textcolor: AppColor.headertextcolor,
                     )),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(),
-                  child: Container(
-                      alignment: Alignment.topCenter,
-                      child: customTextButton(
-                        onclick: () {},
-                        title: 'Resend Code',
-                        textcolor: AppColor.headertextcolor,
-                      )),
-                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 75, right: 75),
@@ -122,8 +119,9 @@ class _phonenoState extends State<phoneno> {
                       child: SizedBox(
                         height: 57,
                         child: customelevatedbutton(
-                          onpress: () { 
+                          onpress: () {
                             if (_formkey.currentState!.validate()) {
+                              BaseHelper.hideKeyboard(context);
                               setState(() {
                                 // _formkey.currentState?.reset();
 

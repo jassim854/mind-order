@@ -21,7 +21,8 @@ class nearbyfoodlistviewBuilder extends StatelessWidget {
         return Column(children: [
           GestureDetector(
             onTap: (() {
-              Navigator.pushNamed(context, RoutesName.classicpizza);
+           
+              Navigator.pushNamed(context, RoutesName.japaneseFood);
             }),
             child: Padding(
               padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),

@@ -3,6 +3,7 @@ import 'package:my_order/utilis/components/Customscreen/customColumnIconText.dar
 
 import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
+import 'package:my_order/utilis/constants/Routes/route_names.dart';
 
 import '../../../../utilis/components/Customscreen/customJapaneseFood.dart';
 import '../../../../utilis/components/Customscreen/header.dart';
@@ -46,6 +47,7 @@ class _JapaneseFoodState extends State<JapaneseFood> {
         backgroundColor: AppColor.scaffoldcolor,
         drawer: const mydrawer(),
         body: ListView(
+          padding: EdgeInsets.only(bottom: 40),
           children: [
             SizedBox(
               width: double.infinity,
@@ -70,8 +72,7 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                                 child: customText(
                                   text: "Kim's",
                                   size: 20,
-                                  textColor:
-                                      AppColor.lightgreyTextcolor,
+                                  textColor: AppColor.lightgreyTextcolor,
                                 ),
                               ),
                               const customImageIcon(
@@ -112,10 +113,10 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                               ),
                               FittedBox(
                                 child: customText(
-                              text: '3280 steps',
-                              size: 12,
-                              weight: FontWeight.w600,
-                              textColor: AppColor.lightgreyTextcolor,
+                                  text: '3280 steps',
+                                  size: 12,
+                                  weight: FontWeight.w600,
+                                  textColor: AppColor.lightgreyTextcolor,
                                 ),
                               ),
                             ],
@@ -128,69 +129,44 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                     horizontal: 20,
                   ),
                   child: customTextfield(
-                      hintstyle: const TextStyle(
-                          fontSize: 20, color: AppColor.headertextcolor),
-                      obsecuretext: false,
-                      hintext: 'Search',
-                      controller: _SearchController,
-                      prefixicon: Transform.scale(
-                        scale: 1.5,
-                        child: const customIcon(
-                          iconname: Icons.search_sharp,
-                          color: AppColor.headertextcolor,
-                        ),
+                    hintstyle: const TextStyle(
+                        fontSize: 20, color: AppColor.headertextcolor),
+                    obsecuretext: false,
+                    hintext: 'Search',
+                    controller: _SearchController,
+                    prefixicon: Transform.scale(
+                      scale: 1.5,
+                      child: const customIcon(
+                        iconname: Icons.search_sharp,
+                        color: AppColor.headertextcolor,
                       ),
-                      suffixicon: customPopupMenuButton(
-                        img: images.popupicon,
-                        items: Flexible(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 15),
-                            child: customTextfield(
-                                hintstyle: const TextStyle(
-                                    fontSize: 20,
-                                    color: AppColor.headertextcolor),
-                                obsecuretext: false,
-                                hintext: 'Search',
-                                controller: _SearchController,
-                                prefixicon: Transform.scale(
-                                  scale: 1.5,
-                                  child: const customIcon(
-                                    iconname: Icons.search_sharp,
-                                    color: AppColor.headertextcolor,
-                                  ),
-                                ),
-                                suffixicon: customPopupMenuButton(
-                                  img: images.popupicon,
-                                  items: [
-                                    PopupMenuItem(
-                                      child: customText(text: "Price"),
-                                      value: 0,
-                                    ),
-                                    PopupMenuItem(
-                                      child:
-                                          customText(text: "Distance"),
-                                      value: 1,
-                                    ),
-                                    PopupMenuItem(
-                                      child: customText(text: "timee"),
-                                      value: 2,
-                                    ),
-                                    PopupMenuItem(
-                                      child: customText(text: "Vlog"),
-                                      value: 3,
-                                    ),
-                                    PopupMenuItem(
-                                      child: customText(
-                                          text: "Resturnats"),
-                                      value: 4,
-                                    )
-                                  ],
-                                )),
-                          ),
+                    ),
+                    suffixicon: customPopupMenuButton(
+                      img: images.popupicon,
+                      items: [
+                        PopupMenuItem(
+                          child: customText(text: "Price"),
+                          value: 0,
                         ),
-                      )),
+                        PopupMenuItem(
+                          child: customText(text: "Distance"),
+                          value: 1,
+                        ),
+                        PopupMenuItem(
+                          child: customText(text: "timee"),
+                          value: 2,
+                        ),
+                        PopupMenuItem(
+                          child: customText(text: "Vlog"),
+                          value: 3,
+                        ),
+                        PopupMenuItem(
+                          child: customText(text: "Resturnats"),
+                          value: 4,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
@@ -205,7 +181,6 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                       itemBuilder: (context, index) {
                         return SizedBox(
                             width: width * 0.2,
-                   
                             child: CustomColumnIconText(
                               img: images.rowIcons,
                               onclick: () {},
@@ -224,26 +199,30 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                       text2: 'See all ',
                     )),
                 SizedBox(
-                  height: 265,
+                  height: 300,
                   width: width * 0.95,
-              
-                  
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         if (index == 0) {
-                          return const PopularRow(
-                            padding: 40.0,
-                            imgConHeight: 142,
-                            imgConwidth: 142,
-                            textConheight: 140,
-                            textConwidth: 118,
+                          return InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, RoutesName.classicpizza);
+                            },
+                            child: const PopularRow(
+                              padding: 40.0,
+                              imgConHeight: 142,
+                              imgConwidth: 142,
+                              textConheight: 170,
+                              textConwidth: 118,
+                            ),
                           );
                         } else {
                           return const PopularRow(
-                              textConheight: 120,
+                              textConheight: 140,
                               imgConHeight: 124,
                               textConwidth: 102,
                               imgConwidth: 124);
@@ -257,14 +236,13 @@ class _JapaneseFoodState extends State<JapaneseFood> {
                       text2: 'See all ',
                     )),
                 SizedBox(
-                  height: 150,
+                  height: 170,
                   width: width * 0.95,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 4,
                     itemBuilder: (context, index) {
                       return Row(
-                  
                         children: [
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.1,

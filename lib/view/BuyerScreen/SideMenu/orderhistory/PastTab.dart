@@ -33,7 +33,7 @@ class _PastTabViewState extends State<PastTabView> {
                         spreadRadius: 2,
                         blurRadius: 12)
                   ]),
-              height: 270,
+              height: 300,
               width: double.infinity,
               child: CustomOrderWidget(
                   pastTabView: true,
@@ -57,7 +57,7 @@ class _PastTabViewState extends State<PastTabView> {
             padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
             child: Container(
                 width: double.infinity,
-                height: 540,
+                height: 600,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: AppColor.scaffoldcolor,
@@ -79,7 +79,8 @@ class _PastTabViewState extends State<PastTabView> {
                               const Duration(milliseconds: 150),
                               () => showDialog(
                                   context: context,
-                                  builder: (context) => const RatingCommentDialog()));
+                                  builder: (context) =>
+                                      const RatingCommentDialog()));
                         },
                         headertext: "Alfredo Pasta",
                         text1: 'Drink',
@@ -103,7 +104,8 @@ class _PastTabViewState extends State<PastTabView> {
                               const Duration(milliseconds: 150),
                               () => showDialog(
                                   context: context,
-                                  builder: (context) => const RatingCommentDialog()));
+                                  builder: (context) =>
+                                      const RatingCommentDialog()));
                         },
                         headertext: "Alfredo Pasta",
                         text1: 'Drink',

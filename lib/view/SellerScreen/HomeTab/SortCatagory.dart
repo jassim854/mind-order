@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/utilis/components/Customscreen/header.dart';
+import 'package:my_order/view/BuyerScreen/HomeTab/drawerScreen/drawerscreen.dart';
 
 class sortcategory extends StatefulWidget {
   const sortcategory({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class _sortcategoryState extends State<sortcategory> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      drawer: mydrawer(),
       backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
@@ -20,44 +23,7 @@ class _sortcategoryState extends State<sortcategory> {
             height: 130,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Builder(builder: (context) {
-                      return GestureDetector(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 20),
-                            child: const ImageIcon(
-                              AssetImage(
-                                "assets/accicons/drawericon.png",
-                              ),
-                              size: 37,
-                            ),
-                          ));
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20, top: 10),
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffFC4747),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Transform.scale(
-                          scale: 0.6,
-                          child: const Image(
-                            image: AssetImage(
-                                "assets/accicons/sellerlogo.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                customhomeLogo(backarrow: false, centerText: false),
                 const SizedBox(
                   height: 10,
                 ),
@@ -97,7 +63,7 @@ class _sortcategoryState extends State<sortcategory> {
                 height: 45,
                 width: 45,
                 child: const ImageIcon(
-                  AssetImage("assets/accicons/leadicon.png"),
+                  AssetImage("assets/images/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
@@ -117,7 +83,7 @@ class _sortcategoryState extends State<sortcategory> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                          "assets/accicons/trash1.png",
+                          "assets/images/accicons/trash1.png",
                         ),
                         fit: BoxFit.fill),
                   )),
@@ -133,7 +99,7 @@ class _sortcategoryState extends State<sortcategory> {
                 height: 45,
                 width: 45,
                 child: const ImageIcon(
-                  AssetImage("assets/accicons/leadicon.png"),
+                  AssetImage("assets/images/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
@@ -153,7 +119,7 @@ class _sortcategoryState extends State<sortcategory> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                          "assets/accicons/trash1.png",
+                          "assets/images/accicons/trash1.png",
                         ),
                         fit: BoxFit.fill),
                   )),
@@ -169,7 +135,7 @@ class _sortcategoryState extends State<sortcategory> {
                 height: 45,
                 width: 45,
                 child: const ImageIcon(
-                  AssetImage("assets/accicons/leadicon.png"),
+                  AssetImage("assets/images/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
@@ -189,7 +155,7 @@ class _sortcategoryState extends State<sortcategory> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                          "assets/accicons/trash1.png",
+                          "assets/images/accicons/trash1.png",
                         ),
                         fit: BoxFit.fill),
                   )),
@@ -205,7 +171,7 @@ class _sortcategoryState extends State<sortcategory> {
                 height: 45,
                 width: 45,
                 child: const ImageIcon(
-                  AssetImage("assets/accicons/leadicon.png"),
+                  AssetImage("assets/images/accicons/leadicon.png"),
                   color: Colors.black,
                 ),
               ),
@@ -225,7 +191,7 @@ class _sortcategoryState extends State<sortcategory> {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
-                          "assets/accicons/trash1.png",
+                          "assets/images/accicons/trash1.png",
                         ),
                         fit: BoxFit.fill),
                   )),

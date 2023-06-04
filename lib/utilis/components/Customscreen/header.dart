@@ -23,12 +23,13 @@ class customlogo extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return SizedBox(
-      height: 170,
+      height: MediaQuery.of(context).viewInsets.bottom > 100 ? 50 : 170,
       child: Stack(
         children: [
           colorcontainer == true
               ? Container(
-                  height: 180,
+                  height:
+                      MediaQuery.of(context).viewInsets.bottom > 100 ? 50 : 180,
                   decoration: const BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -49,8 +50,14 @@ class customlogo extends StatelessWidget {
                 type == 'Buyer'
                     ? Flexible(
                         child: Container(
-                            width: 100,
-                            height: 100,
+                            width:
+                                MediaQuery.of(context).viewInsets.bottom > 100
+                                    ? 50
+                                    : 100,
+                            height:
+                                MediaQuery.of(context).viewInsets.bottom > 100
+                                    ? 50
+                                    : 100,
                             decoration: BoxDecoration(
                                 image: splashscreen == true
                                     ? const DecorationImage(
@@ -64,7 +71,10 @@ class customlogo extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Container(
-                            height: 100,
+                            height:
+                                MediaQuery.of(context).viewInsets.bottom > 100
+                                    ? 50
+                                    : 100,
                             decoration: BoxDecoration(
                                 color: AppColor.splashbackgroundcolor,
                                 borderRadius: BorderRadius.circular(12)),
@@ -74,18 +84,19 @@ class customlogo extends StatelessWidget {
                           ),
                         ),
                       ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: FittedBox(
-                    child: customText(
-                      text: "Mind Order",
-                      size: 20,
-                      weight: FontWeight.w500,
-                      textColor: textcolor,
-                      maxline: 1,
+                if (MediaQuery.of(context).viewInsets.bottom < 100)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: FittedBox(
+                      child: customText(
+                        text: "Mind Order",
+                        size: 20,
+                        weight: FontWeight.w500,
+                        textColor: textcolor,
+                        maxline: 1,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
@@ -141,14 +152,14 @@ class customhomeLogo extends StatelessWidget {
         children: [
           backarrow == true
               ? Transform.scale(
-                scale: 1.4,
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.keyboard_arrow_left_outlined)),
-              )
+                  scale: 1.4,
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_left_outlined)),
+                )
               : Builder(builder: (context) {
                   return InkWell(
                       onTap: () {
@@ -157,7 +168,8 @@ class customhomeLogo extends StatelessWidget {
                       child: Transform.scale(
                           scale: 1.6,
                           alignment: Alignment.topLeft,
-                          child: const customImageIcon(img: images.drawerIcon)));
+                          child:
+                              const customImageIcon(img: images.drawerIcon)));
                 }),
           Container(
               padding: orderHistoryPage == true
@@ -172,16 +184,29 @@ class customhomeLogo extends StatelessWidget {
                 textColor: AppColor.headertextcolor,
               )),
           Container(
-
             padding: EdgeInsets.only(top: backarrow == true ? 0 : 10),
-            child: Transform.scale(
-                scale: 2.4,
-                child: orderHistoryPage == true
-                    ? const SizedBox.shrink()
-                    : const customImageIcon(
-                        img: images.logo,
+            child: type == 'Buyer'
+                ? Transform.scale(
+                    scale: 2.4,
+                    child: orderHistoryPage == true
+                        ? const SizedBox.shrink()
+                        : customImageIcon(
+                            img: images.logo,
+                            color: AppColor.splashbackgroundcolor,
+                          ))
+                : Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
                         color: AppColor.splashbackgroundcolor,
-                      )),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Transform.scale(
+                      scale: 0.7,
+                      child: const Image(
+                        image: AssetImage(images.sellermindlogo),
+                      ),
+                    ),
+                  ),
           )
         ],
       ),

@@ -66,7 +66,7 @@ class customCartRowWidget extends StatelessWidget {
               top: 5,
             ),
             child: SizedBox(
-              width: 105,
+              width: 110,
               height: 76,
               child:
                   Column(crossAxisAlignment: CrossAxisAlignment.end, children: [

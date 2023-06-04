@@ -1,29 +1,32 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:my_order/utilis/components/Customscreen/customOrderHistoryWidget.dart';
+import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 
 import '../../../../utilis/components/Customscreen/header.dart';
+import '../../../../utilis/components/customwidgets/customElevatedButton.dart';
 import '../../../../utilis/components/customwidgets/customIcon.dart';
 import '../../../../utilis/components/customwidgets/customfloatingbutton.dart';
 import '../../../../utilis/components/customwidgets/customtextwidget.dart';
 import '../../../../utilis/constants/Colors/colors.dart';
+import '../../../../utilis/constants/Routes/route_names.dart';
 import '../../HomeTab/bottomAppbar.dart';
 import '../../HomeTab/classicPizza/classicPizza.dart';
 import '../../HomeTab/drawerScreen/drawerscreen.dart';
+import '../orderhistory/RatingComentDialog.dart';
 
 class Favourites extends StatefulWidget {
   const Favourites({Key? key}) : super(key: key);
- 
+
   @override
   State<Favourites> createState() => _FavouritesState();
 }
 
 class _FavouritesState extends State<Favourites> {
- 
-
   String sizetext = 'Coke';
   @override
   Widget build(BuildContext context) {
-
     return SafeArea(
         child: Scaffold(
             backgroundColor: AppColor.scaffoldcolor2,
@@ -53,8 +56,7 @@ class _FavouritesState extends State<Favourites> {
                       itemBuilder: (context, index) {
                         if (index.isEven) {
                           return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 30),
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
                             child: Container(
                               width: double.infinity,
                               height: 470,
@@ -67,7 +69,7 @@ class _FavouritesState extends State<Favourites> {
                                         spreadRadius: 2,
                                         blurRadius: 12)
                                   ]),
-                              child: Stack(children: [
+                              child: Stack(clipBehavior: Clip.none, children: [
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 25, right: 25, top: 15),
@@ -79,38 +81,52 @@ class _FavouritesState extends State<Favourites> {
                                     text3: 'Cheese',
                                     text4: '',
                                     headertext: 'pizza',
-                                    items: [
-                                      PopupMenuItem(
-                                        child: customText(text: "Coke"),
-                                        value: 0,
+                                    divider: true,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 25, right: 25, top: 200),
+                                  child: CustomOrderWidget(
+                                    indexEven: true,
+                                    favourite: true,
+                                    text1: 'Drink',
+                                    text2: sizetext.toString(),
+                                    text3: 'Cheese',
+                                    text4: '',
+                                    headertext: 'pizza',
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 20, bottom: 10),
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: customelevatedbutton(
+                                      padding: 14.0,
+                                      onpress: () {
+                                        Navigator.pushNamed(
+                                            context, RoutesName.classicpizza);
+                                      },
+                                      child: FittedBox(
+                                        child: customText(
+                                          text: 'Order Again',
+                                          size: 16,
+                                          weight: FontWeight.bold,
+                                        ),
                                       ),
-                                      PopupMenuItem(
-                                        child: customText(text: "Spirite"),
-                                        value: 1,
-                                      ),
-                                      PopupMenuItem(
-                                        child: customText(text: "Marinda"),
-                                        value: 2,
-                                      ),
-                                    ],
-                                    onselected: (val) {
-                                      setState(() {
-                                        if (val == 0) {
-                                          setState(() {
-                                            sizetext = 'Coke';
-                                          });
-                                        } else if (val == 1) {
-                                          setState(() {
-                                            sizetext = 'Spirite';
-                                          });
-                                        } else if (val == 2) {
-                                          setState(() {
-                                            sizetext = 'Marinda';
-                                          });
-
-                                        }
-                                      });
-                                    },
+                                      color: AppColor.splashbackgroundcolor,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  bottom: -30,
+                                  right: 0,
+                                  left: 0,
+                                  child: Container(
+                                    alignment: Alignment.bottomCenter,
+                                    clipBehavior: Clip.none,
+                                    child: Image.asset(images.pizzaheartimg),
                                   ),
                                 )
                               ]),
@@ -138,5 +154,4 @@ class _FavouritesState extends State<Favourites> {
                 FloatingActionButtonLocation.centerDocked,
             drawer: const mydrawer()));
   }
-
 }

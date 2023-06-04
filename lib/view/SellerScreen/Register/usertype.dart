@@ -24,7 +24,7 @@ class _usertypeState extends State<usertype> {
       backgroundColor: AppColor.scaffoldcolor,
       body: Column(
         children: [
-          const Flexible(
+          Flexible(
               flex: 2,
               child: customlogo(
                   textcolor: AppColor.headertextcolor, splashscreen: false)),
@@ -57,8 +57,7 @@ class _usertypeState extends State<usertype> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 30, right: 90, left: 90),
+                  padding: const EdgeInsets.only(top: 30, right: 90, left: 90),
                   child: InkWell(
                     onTap: () {
                       setState(() {
@@ -81,8 +80,7 @@ class _usertypeState extends State<usertype> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 30, right: 90, left: 90),
+                  padding: const EdgeInsets.only(top: 30, right: 90, left: 90),
                   child: InkWell(
                     onTap: () {
                       setState(() {

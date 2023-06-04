@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Helper/basehelper.dart';
+import 'package:my_order/utilis/components/customwidgets/customElevatedButton.dart';
+import 'package:my_order/utilis/constants/Colors/colors.dart';
 
 import '../../HomeTab/drawerScreen/drawerscreen.dart';
 
@@ -20,7 +23,8 @@ class _foodsheduleState extends State<foodshedule> {
           Container(
             width: double.infinity,
             height: 160,
-            decoration: BoxDecoration(color: const Color(0xffffffff), boxShadow: [
+            decoration:
+                BoxDecoration(color: const Color(0xffffffff), boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(1),
                 // spreadRadius: 100,
@@ -43,7 +47,7 @@ class _foodsheduleState extends State<foodshedule> {
                             child: Container(
                               child: const ImageIcon(
                                 AssetImage(
-                                  "assets/accicons/drawericon.png",
+                                  "assets/images/applogo/drawerLogo.png",
                                 ),
                                 size: 37,
                               ),
@@ -51,7 +55,7 @@ class _foodsheduleState extends State<foodshedule> {
                           ));
                     }),
                     const ImageIcon(
-                      AssetImage("assets/images/logo.png"),
+                      AssetImage("assets/images/applogo/logo.png"),
                       color: Colors.red,
                       size: 70,
                     )
@@ -139,6 +143,7 @@ class _foodsheduleState extends State<foodshedule> {
                           child: TextFormField(
                             // maxLines: null,
                             // expands: true,
+                            keyboardType: TextInputType.datetime,
                             textAlign: TextAlign.center,
                             style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
@@ -176,6 +181,7 @@ class _foodsheduleState extends State<foodshedule> {
                           child: TextFormField(
                             // maxLines: null,
                             // expands: true,
+                            keyboardType: TextInputType.datetime,
                             textAlign: TextAlign.center,
                             style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
@@ -213,6 +219,8 @@ class _foodsheduleState extends State<foodshedule> {
                           child: TextFormField(
                             // maxLines: null,
                             // expands: true,
+                            keyboardType: TextInputType.datetime,
+
                             textAlign: TextAlign.center,
                             style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
@@ -250,6 +258,7 @@ class _foodsheduleState extends State<foodshedule> {
                           child: TextFormField(
                             // maxLines: null,
                             // expands: true,
+                            keyboardType: TextInputType.datetime,
                             textAlign: TextAlign.center,
                             style: const TextStyle(fontSize: 17),
                             decoration: InputDecoration(
@@ -295,6 +304,7 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
+                          keyboardType: TextInputType.datetime,
                           style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
@@ -332,6 +342,7 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
+                          keyboardType: TextInputType.datetime,
                           style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
@@ -369,6 +380,7 @@ class _foodsheduleState extends State<foodshedule> {
                         child: TextFormField(
                           // maxLines: null,
                           // expands: true,
+                          keyboardType: TextInputType.datetime,
                           style: const TextStyle(fontSize: 17),
                           textAlign: TextAlign.center,
                           decoration: InputDecoration(
@@ -405,6 +417,7 @@ class _foodsheduleState extends State<foodshedule> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
                         onPressed: (() {
+                          BaseHelper.hideKeyboard(context);
                           showDialog(
                               context: context,
                               builder: ((context) => const newmethod()));
@@ -423,13 +436,16 @@ class _foodsheduleState extends State<foodshedule> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
                         onPressed: (() {
+                          BaseHelper.hideKeyboard(context);
                           showDialog(
                               context: context,
                               builder: ((context) => const newmethod()));
                         }),
-                        child: const Text(
-                          "Pay for 1 month",
-                          style: TextStyle(fontSize: 19),
+                        child: FittedBox(
+                          child: const Text(
+                            "Pay for 1 month",
+                            style: TextStyle(fontSize: 19),
+                          ),
                         )),
                   )
                 ],
@@ -459,7 +475,7 @@ class _newmethodState extends State<newmethod> {
         alignment: Alignment.topCenter,
         children: [
           Container(
-            height: 250,
+            height: 280,
             child: Column(
               children: [
                 const SizedBox(
@@ -478,6 +494,16 @@ class _newmethodState extends State<newmethod> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 17.5),
                 ),
+                const SizedBox(
+                  height: 38,
+                ),
+                customelevatedbutton(
+                  onpress: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("Close"),
+                  color: AppColor.colorred,
+                )
               ],
             ),
           ),
@@ -488,8 +514,8 @@ class _newmethodState extends State<newmethod> {
             child: Container(
                 width: 60,
                 height: 60,
-                decoration:
-                    const BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                decoration: const BoxDecoration(
+                    color: AppColor.colorred, shape: BoxShape.circle),
                 child: const Icon(
                   Icons.check,
                   color: Colors.white,

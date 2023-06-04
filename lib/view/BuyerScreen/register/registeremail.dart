@@ -47,170 +47,160 @@ class _CreateaccState extends State<regacc> {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: AppColor.scaffoldcolor,
             body: Column(children: [
-              const Flexible(
-                flex: 2,
-                child: customlogo(
-                  textcolor: AppColor.headertextcolor,
-                  splashscreen: false,
-                  backarrow: true,
-                  colorcontainer: true,
-                ),
+              customlogo(
+                textcolor: AppColor.headertextcolor,
+                splashscreen: false,
+                backarrow: true,
+                colorcontainer: true,
               ),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 10),
-                  child: FittedBox(
-                    child: customText(
-                  text: "You 're there",
-                  size: 30,
-                  textColor: AppColor.splashbackgroundcolor,
-                  weight: FontWeight.w600,
+              SizedBox(
+                height: MediaQuery.of(context).viewInsets.bottom > 50 ? 50 : 0,
+              ),
+              if (MediaQuery.of(context).viewInsets.bottom < 50)
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 10),
+                      child: FittedBox(
+                        child: customText(
+                          text: "You 're there",
+                          size: 30,
+                          textColor: AppColor.splashbackgroundcolor,
+                          weight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                  ),
+                    customText(
+                      text: "Create My Order Account",
+                      size: 23,
+                      textColor: AppColor.headertextcolor,
+                      weight: FontWeight.w600,
+                    ),
+                  ],
                 ),
-              ),
-              Flexible(
-                child: FittedBox(
-                  child: customText(
-                text: "Create My Order Account",
-                size: 23,
-                textColor: AppColor.headertextcolor,
-                weight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Flexible(
-                flex: 6,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Form(
-                    key: _formkey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          child: customTextfield(
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      customTextfield(
+                        hintstyle: const TextStyle(
+                            fontSize: 20, color: AppColor.colorgrey),
+                        obsecuretext: false,
+                        keyboardtype: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email id';
+                          }
+                          if (!RegExp('@.').hasMatch(value)) {
+                            return 'Please enter your valid email  ';
+                          }
+                          return null;
+                        },
+                        hintext: 'Email',
+                        controller: _EmailController,
+                        prefixicon: const customIcon(
+                          iconname: Icons.email_outlined,
+                          color: AppColor.colorgrey,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: customTextfield(
+                          hintstyle: const TextStyle(
+                              fontSize: 20, color: AppColor.colorgrey),
+                          obsecuretext: isvisible ? false : true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Password';
+                            }
+
+                            return null;
+                          },
+                          hintext: "Password",
+                          controller: _passwordController,
+                          prefixicon:
+                              const customImageIcon(img: images.passwordicon),
+                          suffixicon: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  isvisible = !isvisible;
+                                });
+                              },
+                              child: customImageIcon(
+                                img: images.password2icon,
+                                color: isvisible ? Colors.red : Colors.black,
+                              )),
+                        ),
+                      ),
+                      customTextfield(
+                          hintstyle: const TextStyle(
+                              fontSize: 20, color: AppColor.colorgrey),
+                          obsecuretext: false,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter your Pin Location';
+                            }
+
+                            return null;
+                          },
+                          hintext: "Pin Location",
+                          controller: _pinlocationController,
+                          prefixicon: const customIcon(
+                            iconname: Icons.location_on_outlined,
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: customTextfield(
+                            keyboardtype: TextInputType.number,
                             hintstyle: const TextStyle(
                                 fontSize: 20, color: AppColor.colorgrey),
                             obsecuretext: false,
-                            keyboardtype: TextInputType.emailAddress,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Please enter your email id';
+                                return 'Please enter Phone Number';
                               }
-                              if (!RegExp('@.').hasMatch(value)) {
-                                return 'Please enter your valid email  ';
-                              }
+
                               return null;
                             },
-                            hintext: 'Email',
-                            controller: _EmailController,
+                            hintext: "Phone",
+                            controller: _phoneController,
                             prefixicon: const customIcon(
-                              iconname: Icons.email_outlined,
-                              color: AppColor.colorgrey,
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                          child: customTextfield(
-                            hintstyle: const TextStyle(
-                                fontSize: 20, color: AppColor.colorgrey),
-                            obsecuretext: isvisible ? false : true,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your Password';
-                              }
-
-                              return null;
-                            },
-                            hintext: "Password",
-                            controller: _passwordController,
-                            prefixicon: const customImageIcon(
-                                img: images.passwordicon),
-                            suffixicon: InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    isvisible = !isvisible;
-                                  });
-                                },
-                                child: customImageIcon(
-                                  img: images.password2icon,
-                                  color:
-                                      isvisible ? Colors.red : Colors.black,
-                                )),
-                          ),
-                        ),
-                        Flexible(
-                          child: customTextfield(
-                              hintstyle: const TextStyle(
-                                  fontSize: 20, color: AppColor.colorgrey),
-                              obsecuretext: false,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your Pin Location';
-                                }
-
-                                return null;
-                              },
-                              hintext: "Pin Location",
-                              controller: _pinlocationController,
-                              prefixicon: const customIcon(
-                                iconname: Icons.location_on_outlined,
-                              )),
-                        ),
-                        Flexible(
-                          child: customTextfield(
-                              keyboardtype: TextInputType.number,
-                              hintstyle: const TextStyle(
-                                  fontSize: 20,
-                                  color: AppColor.colorgrey),
-                              obsecuretext: false,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter Phone Number';
-                                }
-
-                                return null;
-                              },
-                              hintext: "Phone",
-                              controller: _phoneController,
-                              prefixicon: const customIcon(
-                                  iconname: Icons.phone_android)),
-                        ),
-                      ],
-                    ),
+                                iconname: Icons.phone_android)),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 160,
-                    right: 160,
-                  ),
-                  child: Container(
-                    // color: Colors.red,
-                    alignment: Alignment.bottomCenter,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: customRoundContainer(
-                            containerColor: AppColor.colorlightred,
-                          ),
-                        ),
-                        Expanded(
-                          child: customRoundContainer(
-                            containerColor: AppColor.splashbackgroundcolor,
-                          ),
-                        ),
-                      ],
-                    ),
+              Spacer(),
+              Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height * 0.07),
+                child: Container(
+                  // color: Colors.red,
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      customRoundContainer(
+                        containerColor: AppColor.colorlightred,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      customRoundContainer(
+                        containerColor: AppColor.splashbackgroundcolor,
+                      ),
+                    ],
                   ),
                 ),
               )
@@ -220,8 +210,10 @@ class _CreateaccState extends State<regacc> {
                 if (_formkey.currentState!.validate()) {
                   setState(() {
                     _formkey.currentState?.reset();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const locations()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const locations()));
                   });
                 } else {
                   return null;

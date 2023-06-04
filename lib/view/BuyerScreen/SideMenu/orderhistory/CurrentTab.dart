@@ -9,6 +9,7 @@ class CurrentTaBView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool switchValue = false;
     return ListView.builder(
       itemCount: 2,
       itemBuilder: (context, index) {
@@ -34,7 +35,7 @@ class CurrentTaBView extends StatelessWidget {
                     badgeColor: AppColor.colorGreen,
                     child: Container(
                         width: double.infinity,
-                        height: 470,
+                        height: 510,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: AppColor.scaffoldcolor,
@@ -49,12 +50,13 @@ class CurrentTaBView extends StatelessWidget {
                               left: 25, right: 25, top: 15),
                           child: Column(
                             children: [
-                              const CustomOrderWidget(
+                              CustomOrderWidget(
                                 headertext: "Alfredo Pasta",
                                 text1: 'Drink',
                                 text2: 'Coke',
                                 text3: 'Cheese',
                                 text4: 'yes',
+                                switchValue: switchValue,
                               ),
                               const Padding(
                                 padding: EdgeInsets.only(
@@ -64,12 +66,13 @@ class CurrentTaBView extends StatelessWidget {
                                   thickness: 3,
                                 ),
                               ),
-                              const CustomOrderWidget(
+                              CustomOrderWidget(
                                 headertext: "Alfredo Pasta",
                                 text1: 'Drink',
                                 text2: 'Coke',
                                 text3: 'Cheese',
                                 text4: 'yes',
+                                switchValue: switchValue,
                               ),
                             ],
                           ),
@@ -93,7 +96,7 @@ class CurrentTaBView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30),
                   child: Container(
-                    height: 230,
+                    height: 250,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: AppColor.textfieldcolorgrey,
@@ -105,15 +108,15 @@ class CurrentTaBView extends StatelessWidget {
                         ]),
                     child: Column(
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.only(
-                              left: 25, right: 25, top: 15),
+                        Padding(
+                          padding:
+                              EdgeInsets.only(left: 25, right: 25, top: 15),
                           child: CustomOrderWidget(
                             headertext: "Egg Soup",
                             text1: 'Drink',
                             text2: 'Coke',
                             text3: 'Cheese',
-                            text4: 'yes',
+                            text4: 'Size',
                           ),
                         ),
                       ],

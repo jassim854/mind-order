@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Helper/basehelper.dart';
+import 'package:my_order/utilis/components/Customscreen/header.dart';
+import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
+import 'package:my_order/utilis/constants/Colors/colors.dart';
+import 'package:my_order/view/BuyerScreen/HomeTab/drawerScreen/drawerscreen.dart';
 
-import '../../../utilis/services/CamGalleryAccess/galleryaccess.dart';
 import 'addcategory.dart';
 
 class imageupload extends StatefulWidget {
@@ -11,18 +15,14 @@ class imageupload extends StatefulWidget {
 }
 
 class _imageuploadState extends State<imageupload> {
-  dismissdialog() {
-    if (dcontext != null) {
-      Navigator.pop(dcontext);
-    }
-  }
-
+  var imageFile;
   var imgcon = 0;
   @override
-  var slidevalue = 1.0;
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      drawer: mydrawer(),
       backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
@@ -31,44 +31,7 @@ class _imageuploadState extends State<imageupload> {
             height: 130,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Builder(builder: (context) {
-                      return GestureDetector(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 20),
-                            child: const ImageIcon(
-                              AssetImage(
-                                "assets/accicons/drawericon.png",
-                              ),
-                              size: 37,
-                            ),
-                          ));
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20, top: 10),
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffFC4747),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Transform.scale(
-                          scale: 0.6,
-                          child: const Image(
-                            image: AssetImage(
-                                "assets/accicons/sellerlogo.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                customhomeLogo(backarrow: false, centerText: false),
                 const SizedBox(
                   height: 10,
                 ),
@@ -81,13 +44,8 @@ class _imageuploadState extends State<imageupload> {
                         scale: 1.8,
                         child: IconButton(
                             onPressed: () {
-                              setState(() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const addcategory(),
-                                    ));
-                              });
+                              Navigator.of(context).pop(imageFile);
+                              print(imageFile);
                             },
                             icon: const Icon(
                               Icons.keyboard_arrow_left,
@@ -131,9 +89,26 @@ class _imageuploadState extends State<imageupload> {
                         ),
                       )
                     : Container(
-                        width: 320,
+                        width: double.infinity,
+                        margin: EdgeInsets.only(left: 30, right: 30),
                         height: 190,
-                        color: Colors.grey,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            color: Colors.grey,
+                            border: Border.all(
+                                width: 4, color: AppColor.colorDarkYellow)),
+                        child: InkWell(
+                            onTap: () async {
+                              imageFile =
+                                  await BaseHelper.imagePickerSheet(context);
+                              setState(() {});
+                            },
+                            child: customText(
+                              text: 'Upload',
+                              size: 19,
+                              weight: FontWeight.bold,
+                              textColor: AppColor.colorred,
+                            )),
                       ),
               ),
             ),

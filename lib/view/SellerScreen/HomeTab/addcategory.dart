@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/utilis/components/Customscreen/header.dart';
+import 'package:my_order/utilis/constants/Routes/route_names.dart';
+import 'package:my_order/view/BuyerScreen/HomeTab/drawerScreen/drawerscreen.dart';
 
-import '../../../utilis/services/CamGalleryAccess/galleryaccess.dart';
-import 'JapeneseFood.dart';
+import 'japeneseSellerFood.dart';
 import 'imageupload.dart';
 import 'menuicon.dart';
 
 late BuildContext dcontext;
 
-class addcategory extends StatefulWidget {
-  const addcategory({Key? key}) : super(key: key);
+class AddCategory extends StatefulWidget {
+  const AddCategory({Key? key}) : super(key: key);
 
   @override
-  State<addcategory> createState() => _addcategoryState();
+  State<AddCategory> createState() => _AddCategoryState();
 }
 
-class _addcategoryState extends State<addcategory> {
+class _AddCategoryState extends State<AddCategory> {
+  var imageFile;
   @override
   Widget build(BuildContext context) {
-    setState(() {});
     return SafeArea(
         child: Scaffold(
+      drawer: mydrawer(),
       backgroundColor: const Color(0xffFFFFFF),
       body: ListView(
         children: [
@@ -28,44 +31,7 @@ class _addcategoryState extends State<addcategory> {
             height: 130,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Builder(builder: (context) {
-                      return GestureDetector(
-                          onTap: () {
-                            Scaffold.of(context).openDrawer();
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8, top: 20),
-                            child: const ImageIcon(
-                              AssetImage(
-                                "assets/accicons/drawericon.png",
-                              ),
-                              size: 37,
-                            ),
-                          ));
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20, top: 10),
-                      child: Container(
-                        height: 45,
-                        width: 45,
-                        decoration: BoxDecoration(
-                            color: const Color(0xffFC4747),
-                            borderRadius: BorderRadius.circular(12)),
-                        child: Transform.scale(
-                          scale: 0.6,
-                          child: const Image(
-                            image: AssetImage(
-                                "assets/accicons/sellerlogo.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                customhomeLogo(backarrow: false, centerText: false),
                 const SizedBox(
                   height: 10,
                 ),
@@ -78,12 +44,7 @@ class _addcategoryState extends State<addcategory> {
                         scale: 1.8,
                         child: IconButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const japenesesellerfood(),
-                                  ));
+                              Navigator.of(context).pop();
                             },
                             icon: const Icon(
                               Icons.keyboard_arrow_left,
@@ -113,73 +74,52 @@ class _addcategoryState extends State<addcategory> {
             ),
           ),
           Stack(
+            clipBehavior: Clip.none,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                      child: Center(
-                          child: imageFile != null
-                              ? Container(
-                                  width: 320,
-                                  height: 190,
-                                  color: Colors.grey,
-                                  child: InteractiveViewer(
-                                      child: Image.file(
-                                    imageFile,
-                                    fit: BoxFit.fill,
-                                  )))
-                              : Container(
-                                  width: 320,
-                                  height: 190,
-                                  color: Colors.grey,
-                                ))),
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.only(top: 160),
-                    child: InkWell(
-                      onTap: () {
-                        print("yess");
-                        setState(() {
-                          showDialog(
-                              context: context,
-                              builder: ((context) {
-                                dcontext = context;
-                                return CamGall(context,
-                                    classname: const imageupload());
-                              })).whenComplete(() {
-                            print("clicked");
-                            setState(() {});
-                          });
-                        });
-                      },
-                      child: Center(
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          decoration: const BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(15),
-                                  topRight: Radius.circular(15),
-                                  bottomRight: Radius.circular(15))),
-                          child: const Icon(
-                            Icons.add_sharp,
-                            color: Colors.white,
-                            size: 45,
-                            shadows: [
-                              Shadow(color: Colors.white, offset: Offset(0, 2))
-                            ],
-                          ),
-                        ),
-                      ),
+              imageFile != null
+                  ? Container(
+                      margin: EdgeInsets.only(left: 40, right: 40),
+                      width: double.infinity,
+                      height: 190,
+                      color: Colors.grey,
+                      child: InteractiveViewer(
+                          child: Image.file(
+                        imageFile,
+                        fit: BoxFit.fill,
+                      )))
+                  : Container(
+                      margin: EdgeInsets.only(left: 40, right: 40),
+                      height: 190,
+                      color: Colors.grey,
                     ),
-                  ))
-                ],
+              Positioned(
+                left: 170,
+                top: 160,
+                child: InkWell(
+                  onTap: () async {
+                    imageFile = await Navigator.pushNamed(
+                        context, RoutesName.imageUploadView );
+                    setState(() {});
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: const BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                            bottomRight: Radius.circular(15))),
+                    child: const Icon(
+                      Icons.add_sharp,
+                      color: Colors.white,
+                      size: 45,
+                      shadows: [
+                        Shadow(color: Colors.white, offset: Offset(0, 2))
+                      ],
+                    ),
+                  ),
+                ),
               )
             ],
           ),
@@ -200,7 +140,7 @@ class _addcategoryState extends State<addcategory> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    "assets/accicons/bookicon.png",
+                                    "assets/images/accicons/bookicon.png",
                                   ),
                                   fit: BoxFit.cover)),
                         ),
@@ -237,11 +177,11 @@ class _addcategoryState extends State<addcategory> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12))),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const MenuIcon(),
-                                  ));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //       builder: (context) => const MenuIcon(),
+                              //     ));
                             },
                             child: const Text(
                               "Set Icon",
@@ -259,7 +199,7 @@ class _addcategoryState extends State<addcategory> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                    "assets/accicons/descicon.png",
+                                    "assets/images/accicons/descicon.png",
                                   ),
                                   fit: BoxFit.cover)),
                         ),
@@ -267,56 +207,22 @@ class _addcategoryState extends State<addcategory> {
                       const SizedBox(
                         height: 5,
                       ),
-                      Flexible(
-                          child: SizedBox(
-                        height: 50,
+                      SizedBox(
                         width: 320,
-                        child: const TextField(
+                        child: TextField(
                           textAlign: TextAlign.center,
-                          cursorHeight: 10,
-                          maxLines: 1,
+                          minLines: 1,
+                          maxLines: 5,
                           decoration: InputDecoration(
-                            hintText: "Description",
-                            hintStyle: TextStyle(
-                                fontSize: 23,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black),
-                          ),
+                              hintText: "Description",
+                              hintStyle: TextStyle(
+                                  fontSize: 23,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black),
+                              enabledBorder: UnderlineInputBorder(),
+                              focusedBorder: UnderlineInputBorder()),
                         ),
-                      )),
-                      Flexible(
-                          child: SizedBox(
-                        height: 40,
-                        width: 320,
-                        child: const TextField(
-                          textAlign: TextAlign.center,
-                          cursorHeight: 10,
-                          maxLines: 1,
-                          decoration: InputDecoration(),
-                        ),
-                      )),
-                      Flexible(
-                          child: SizedBox(
-                        height: 40,
-                        width: 320,
-                        child: const TextField(
-                          textAlign: TextAlign.center,
-                          cursorHeight: 10,
-                          maxLines: 1,
-                          decoration: InputDecoration(),
-                        ),
-                      )),
-                      Flexible(
-                          child: SizedBox(
-                        height: 40,
-                        width: 320,
-                        child: const TextField(
-                          textAlign: TextAlign.center,
-                          cursorHeight: 10,
-                          maxLines: 1,
-                          decoration: InputDecoration(),
-                        ),
-                      )),
+                      ),
                     ],
                   ),
                 ),

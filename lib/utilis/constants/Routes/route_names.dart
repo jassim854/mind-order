@@ -26,5 +26,9 @@ class RoutesName {
   static const String paymentmethod = 'PaymentMethodPage';
   static const String settings = 'SettingPage';
   static const String foodshedule = 'FoodShedulePage';
-
+   static const String japaneseSellerFood = 'japaneseSellerFood';
+ static const String addCategory = 'addCategory';
+ static const String addProduct = 'addProduct';
+  static const String expandedFood = 'expandedFood';
+    static const String imageUploadView = 'imageUploadView';
 }

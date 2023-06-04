@@ -3,13 +3,14 @@ import 'package:my_order/utilis/components/Customscreen/CustomClassicPizzaWidget
 import 'package:my_order/utilis/components/Customscreen/customColumnIconText.dart';
 import 'package:my_order/utilis/components/customwidgets/customElevatedButton.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
+import 'package:my_order/view/BuyerScreen/HomeTab/classicPizza/classicPizza.dart';
 
 import '../../constants/Colors/colors.dart';
 import '../customwidgets/customtextwidget.dart';
 
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class CustomOrderWidget extends StatelessWidget {
+class CustomOrderWidget extends StatefulWidget {
   final headertext,
       text1,
       text2,
@@ -19,11 +20,10 @@ class CustomOrderWidget extends StatelessWidget {
       onRated,
       heartRating,
       favourite,
-      onselected,
-      items,
-      indexEven;
-
-  const CustomOrderWidget({
+      indexEven,
+      switchValue,
+      divider;
+  CustomOrderWidget({
     Key? key,
     this.headertext,
     this.text1,
@@ -34,42 +34,41 @@ class CustomOrderWidget extends StatelessWidget {
     this.onRated,
     this.heartRating,
     this.favourite,
-    this.onselected,
-    this.items,
+    this.switchValue,
     this.indexEven,
+    this.divider,
   }) : super(key: key);
 
+  @override
+  State<CustomOrderWidget> createState() => _CustomOrderWidgetState();
+}
+
+class _CustomOrderWidgetState extends State<CustomOrderWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Header(text: headertext),
+        Header(text: widget.headertext),
         const SizedBox(
           height: 10,
         ),
         Container(
-          color: Colors.amber,
+          // color: Colors.amber,
           child: CustomRowText_Text_Widget(
-            text1: text1,
-            text2: text2,
-            favourite: favourite,
-//             Sizeonselected: Sizeonselected,
-//             Drinkitems: Drinkitems,
-//             Drinkonselected: drinkOnselected,
-// Sizeitems: sizeItems,
-// switchValue: ,
+            text1: widget.text1,
+            text2: widget.text2,
+            favourite: widget.favourite,
           ),
         ),
         const SizedBox(
           height: 5,
         ),
         CustomRowText_Text_Widget(
-          text1: text3,
-          text2: text4,
-          favourite: favourite,
-          Sizeonselected: onselected,
+          text1: widget.text3,
+          text2: widget.text4,
+          favourite: widget.favourite,
         ),
-        pastTabView == true
+        widget.pastTabView == true
             ? RatingBar(
                 initialRating: 3,
                 direction: Axis.horizontal,
@@ -89,10 +88,18 @@ class CustomOrderWidget extends StatelessWidget {
                       color: AppColor.colorYellow,
                     )),
                 itemPadding: const EdgeInsets.symmetric(horizontal: 8.0),
-                onRatingUpdate: onRated)
-            : Container(),
+                onRatingUpdate: widget.onRated)
+            : widget.divider == true
+                ? Divider(
+                    color: AppColor.colorDarkYellow,
+                    thickness: 1.5,
+                    endIndent: 80,
+                    indent: 80,
+                    height: 50,
+                  )
+                : Container(),
         Padding(
-          padding: pastTabView == true
+          padding: widget.pastTabView == true
               ? const EdgeInsets.only(right: 0, top: 20)
               : const EdgeInsets.only(right: 150, top: 20),
           child: SizedBox(
@@ -101,29 +108,32 @@ class CustomOrderWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                indexEven == true
+                widget.indexEven == true
                     ? Container()
                     : SizedBox(
                         width: 130,
                         child: customelevatedbutton(
                             padding: 14.0,
                             onpress: () {
-                              pastTabView == true
+                              widget.pastTabView == true
                                   ? Navigator.pushNamed(
                                       context, RoutesName.classicpizza)
                                   : null;
                             },
-                            child: customText(
-                              text:
-                                  pastTabView == true ? 'Order Again' : 'Track',
-                              size: 16,
-                              weight: FontWeight.bold,
+                            child: FittedBox(
+                              child: customText(
+                                text: widget.pastTabView == true
+                                    ? 'Order Again'
+                                    : 'Track',
+                                size: 16,
+                                weight: FontWeight.bold,
+                              ),
                             ),
-                            color: pastTabView == true
+                            color: widget.pastTabView == true
                                 ? AppColor.splashbackgroundcolor
                                 : AppColor.colorDarkYellow),
                       ),
-                pastTabView == true
+                widget.pastTabView == true
                     ? RatingBar(
                         initialRating: 0,
                         direction: Axis.horizontal,
@@ -143,8 +153,9 @@ class CustomOrderWidget extends StatelessWidget {
                             color: AppColor.splashbackgroundcolor,
                           ),
                         ),
-                        itemPadding: const EdgeInsets.symmetric(horizontal: 0.0),
-                        onRatingUpdate: heartRating)
+                        itemPadding:
+                            const EdgeInsets.symmetric(horizontal: 0.0),
+                        onRatingUpdate: widget.heartRating)
                     : Container()
               ],
             ),
@@ -194,14 +205,12 @@ class CustomRowText_Text_Widget extends StatelessWidget {
       Drinkitems,
       Sizeonselected,
       Sizeitems;
-  late var switchValue;
 
   CustomRowText_Text_Widget({
     Key? key,
     this.text1,
     this.text2,
     this.favourite,
-    this.switchValue,
     this.Drinkonselected,
     this.Drinkitems,
     this.Sizeonselected,
@@ -219,27 +228,24 @@ class CustomRowText_Text_Widget extends StatelessWidget {
           size: 17,
         ),
         text1 == 'Drink'
-            ? CustomRowTextPopup(
-                text: text2,
-                onselected: Drinkonselected,
-                items: Drinkitems,
+            ? Text(
+                text2,
+                style: TextStyle(color: AppColor.colorred),
               )
             : text1 == 'Size'
-                ? CustomRowTextPopup(
-                    text: text2,
-                    onselected: Sizeonselected,
-                    items: Sizeitems,
+                ? Text(
+                    text2,
+                    style: TextStyle(color: AppColor.colorred),
                   )
-                :   text1 == 'Cheese'?  CustomSwitch(
-                    onChanged: (valu) {
-                      switchValue = valu;
-                    },
-                    value: switchValue,
-                  ): customText(
-                    text: text2,
-                    weight: FontWeight.w400,
-                    textColor: AppColor.lightgreyTextcolor,
-                  )
+                : text1 == 'Cheese'
+                    ? CustomSwitch(
+                        value: switched,
+                      )
+                    : customText(
+                        text: text2,
+                        weight: FontWeight.w400,
+                        textColor: AppColor.lightgreyTextcolor,
+                      )
       ],
     );
   }

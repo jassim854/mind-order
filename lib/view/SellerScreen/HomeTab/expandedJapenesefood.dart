@@ -1,18 +1,21 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:my_order/utilis/components/Customscreen/CustomClassicPizzaWidgets.dart';
+import 'package:my_order/utilis/components/customwidgets/customPopupMenuButton.dart';
+import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 
 var ispressed = false;
 var x = ['22'];
 
-class expandedFood extends StatefulWidget {
-  const expandedFood({Key? key}) : super(key: key);
+class ExpandedFood extends StatefulWidget {
+  const ExpandedFood({Key? key}) : super(key: key);
 
   @override
-  State<expandedFood> createState() => _expandedFoodState();
+  State<ExpandedFood> createState() => _ExpandedFoodState();
 }
 
-class _expandedFoodState extends State<expandedFood> {
+class _ExpandedFoodState extends State<ExpandedFood> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,8 +53,7 @@ class _expandedFoodState extends State<expandedFood> {
                         child: Transform.scale(
                           scale: 0.6,
                           child: const Image(
-                            image: AssetImage(
-                                "assets/accicons/sellerlogo.png"),
+                            image: AssetImage("assets/accicons/sellerlogo.png"),
                           ),
                         ),
                       ),
@@ -116,7 +118,31 @@ class _expandedFoodState extends State<expandedFood> {
                           size: 45,
                           color: Colors.grey,
                         ),
-                        suffixIcon: popup(context)),
+                        suffixIcon: customPopupMenuButton(
+                          img: images.popupicon,
+                          items: [
+                            const PopupMenuItem(
+                              child: Text("Price"),
+                              value: 0,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Distance"),
+                              value: 1,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("timee"),
+                              value: 2,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Vlog"),
+                              value: 3,
+                            ),
+                            const PopupMenuItem(
+                              child: Text("Resturnats"),
+                              value: 4,
+                            )
+                          ],
+                        )),
                   ),
                 ),
                 Column(
@@ -125,7 +151,8 @@ class _expandedFoodState extends State<expandedFood> {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      constraints: const BoxConstraints.expand(width: 30, height: 30),
+                      constraints:
+                          const BoxConstraints.expand(width: 30, height: 30),
                       child: const FittedBox(
                         child: Text(
                           "Starters",
@@ -186,7 +213,8 @@ class _expandedFoodState extends State<expandedFood> {
                                           alignment: Alignment.bottomCenter,
                                           child: Text(
                                             x.toString(),
-                                            style: const TextStyle(fontSize: 18),
+                                            style:
+                                                const TextStyle(fontSize: 18),
                                           )))
                                 ],
                               );
@@ -224,44 +252,4 @@ class _expandedFoodState extends State<expandedFood> {
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerDocked));
   }
-}
-
-popup(BuildContext context) {
-  return PopupMenuButton(
-      onSelected: ((value) {
-        // if (value == 0) {
-        //   Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //           builder: (context) => homeScreen()));
-        // } else if (value == 1) {
-        //   Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //           builder: (context) => CuisineScreen()));
-        // }
-      }),
-      icon: const ImageIcon(AssetImage("assets/images/icon1.png")),
-      itemBuilder: (context) => [
-            const PopupMenuItem(
-              child: Text("Price"),
-              value: 0,
-            ),
-            const PopupMenuItem(
-              child: Text("Distance"),
-              value: 1,
-            ),
-            const PopupMenuItem(
-              child: Text("timee"),
-              value: 2,
-            ),
-            const PopupMenuItem(
-              child: Text("Vlog"),
-              value: 3,
-            ),
-            const PopupMenuItem(
-              child: Text("Resturnats"),
-              value: 4,
-            )
-          ]);
 }

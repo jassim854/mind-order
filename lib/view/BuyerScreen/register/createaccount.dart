@@ -58,16 +58,14 @@ class _CreateaccState extends State<Createacc> {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
         child: Scaffold(
+            resizeToAvoidBottomInset: false,
             backgroundColor: AppColor.scaffoldcolor,
             body: Column(children: [
-              const Flexible(
-                flex: 2,
-                child: customlogo(
-                  textcolor: AppColor.headertextcolor,
-                  splashscreen: false,
-                  colorcontainer: true,
-                  backarrow: true,
-                ),
+              customlogo(
+                textcolor: AppColor.headertextcolor,
+                splashscreen: false,
+                colorcontainer: true,
+                backarrow: true,
               ),
               const CustomFlexibleSizeBox(flex: 1, height: 10),
               Flexible(
@@ -81,7 +79,6 @@ class _CreateaccState extends State<Createacc> {
                       ),
                     )),
               ),
-            
               Flexible(
                 child: Container(
                     height: 25,
@@ -100,7 +97,6 @@ class _CreateaccState extends State<Createacc> {
                 ),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.4,
-               
                   child: Form(
                     key: _formkey,
                     child: Column(
@@ -108,54 +104,54 @@ class _CreateaccState extends State<Createacc> {
                       children: [
                         Row(children: [
                           Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 7),
-                          child: Container(
-                            height: height * 0.08,
-                            child: customTextfield(
-                                hintstyle: const TextStyle(
-                                    fontSize: 20,
-                                    color: AppColor.colorgrey),
-                                hintext: "First Name",
-                                controller: _nameController,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter Name';
-                                  }
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 7),
+                              child: Container(
+                                height: height * 0.08,
+                                child: customTextfield(
+                                    hintstyle: const TextStyle(
+                                        fontSize: 20,
+                                        color: AppColor.colorgrey),
+                                    hintext: "First Name",
+                                    controller: _nameController,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Name';
+                                      }
 
-                                  return null;
-                                },
-                                obsecuretext: false,
-                                prefixicon: const customImageIcon(
-                                  img: images.personIcon,
-                                )),
-                          ),
-                        ),
+                                      return null;
+                                    },
+                                    obsecuretext: false,
+                                    prefixicon: const customImageIcon(
+                                      img: images.personIcon,
+                                    )),
+                              ),
+                            ),
                           ),
                           Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 7),
-                          child: Container(
-                            height: height * 0.08,
-                            child: customTextfield(
-                                hintstyle: const TextStyle(
-                                    fontSize: 20,
-                                    color: AppColor.colorgrey),
-                                hintext: "Last Name",
-                                controller: _LastnameController,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Enter Last Name';
-                                  }
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 7),
+                              child: Container(
+                                height: height * 0.08,
+                                child: customTextfield(
+                                    hintstyle: const TextStyle(
+                                        fontSize: 20,
+                                        color: AppColor.colorgrey),
+                                    hintext: "Last Name",
+                                    controller: _LastnameController,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Last Name';
+                                      }
 
-                                  return null;
-                                },
-                                obsecuretext: false,
-                                prefixicon: const customImageIcon(
-                                  img: images.personIcon,
-                                )),
-                          ),
-                        ),
+                                      return null;
+                                    },
+                                    obsecuretext: false,
+                                    prefixicon: const customImageIcon(
+                                      img: images.personIcon,
+                                    )),
+                              ),
+                            ),
                           ),
                         ]),
                         Container(
@@ -210,8 +206,7 @@ class _CreateaccState extends State<Createacc> {
                                         hintext: "Postcode",
                                         controller: _postcodeController,
                                         validator: (value) {
-                                          if (value == null ||
-                                              value.isEmpty) {
+                                          if (value == null || value.isEmpty) {
                                             return 'Enter Postcode';
                                           }
 
@@ -235,8 +230,7 @@ class _CreateaccState extends State<Createacc> {
                                         hintext: "Country",
                                         controller: _countryController,
                                         validator: (value) {
-                                          if (value == null ||
-                                              value.isEmpty) {
+                                          if (value == null || value.isEmpty) {
                                             return 'Enter Your Country';
                                           }
 

@@ -22,14 +22,12 @@ class customText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      
       text,
-      
       style: GoogleFonts.nunito(
         textStyle: TextStyle(
-        fontSize: size,
-        fontWeight: weight,
-        color: textColor,
+          fontSize: size,
+          fontWeight: weight,
+          color: textColor,
         ),
       ),
       textAlign: textalignment,
