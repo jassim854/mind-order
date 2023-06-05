@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Controllers/auth_controller.dart';
 import 'package:my_order/utilis/components/customwidgets/customIcon.dart';
 import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 import 'package:my_order/utilis/constants/Colors/colors.dart';
 import 'package:my_order/utilis/constants/Routes/route_names.dart';
-
 
 class mydrawer extends StatefulWidget {
   const mydrawer({Key? key}) : super(key: key);
@@ -33,7 +33,6 @@ class _mydrawerState extends State<mydrawer> {
                   backgroundColor: AppColor.colorgrey,
                   radius: 32,
                 ),
-      
                 Padding(
                   padding: const EdgeInsets.only(left: 12),
                   child: customText(
@@ -54,7 +53,6 @@ class _mydrawerState extends State<mydrawer> {
             },
             home: true,
           ),
-     
           CustomListtileIconText(
             icon: images.drawerIcon1,
             text: 'Order History',
@@ -62,7 +60,6 @@ class _mydrawerState extends State<mydrawer> {
               Navigator.pushNamed(context, RoutesName.orderHistory);
             },
           ),
-      
           const Divider(
             color: AppColor.drawericonColor,
             thickness: 1.0,
@@ -78,26 +75,20 @@ class _mydrawerState extends State<mydrawer> {
             color: AppColor.drawericonColor,
             thickness: 1.0,
           ),
-      
           CustomListtileIconText(
             icon: images.drawerIcon3,
             text: 'FAQS',
-            onclick: () {
-            },
+            onclick: () {},
           ),
-       
           CustomListtileIconText(
             icon: images.drawerIcon4,
             text: 'Support',
-            onclick: () {
-           
-            },
+            onclick: () {},
           ),
           const Divider(
             color: AppColor.drawericonColor,
             thickness: 1.0,
           ),
-      
           CustomListtileIconText(
             icon: images.drawerIcon5,
             text: 'Settings',
@@ -105,22 +96,18 @@ class _mydrawerState extends State<mydrawer> {
               Navigator.pushNamed(context, RoutesName.settings);
             },
           ),
- 
           CustomListtileIconText(
             icon: images.drawerIcon6,
             text: 'Logout',
             onclick: () {
-            
+              AuthController.logOut(context);
             },
           ),
         ],
       ),
-   
     );
   }
 }
-
-
 
 class CustomListtileIconText extends StatelessWidget {
   final icon, onclick, text;

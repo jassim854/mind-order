@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Controllers/auth_controller.dart';
 import 'package:my_order/utilis/components/Customscreen/header.dart';
 import 'package:my_order/utilis/components/customwidgets/customTextField.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
@@ -20,18 +21,18 @@ class regacc extends StatefulWidget {
 
 class _CreateaccState extends State<regacc> {
   bool isvisible = false;
-  TextEditingController? _EmailController;
-  TextEditingController? _passwordController;
-  TextEditingController? _pinlocationController;
-  TextEditingController? _phoneController;
+  late TextEditingController _EmailController;
+  late TextEditingController _passwordController;
+  late TextEditingController _pinlocationController;
+  late TextEditingController _phoneController;
   @override
   @override
   void initState() {
     print('init');
-    _EmailController = _EmailController;
-    _passwordController = _passwordController;
-    _pinlocationController = _pinlocationController;
-    _phoneController = _phoneController;
+    _EmailController = TextEditingController();
+    _passwordController = TextEditingController();
+    _pinlocationController = TextEditingController();
+    _phoneController = TextEditingController();
     // TODO: implement initState
     super.initState();
   }
@@ -39,10 +40,10 @@ class _CreateaccState extends State<regacc> {
   void dispose() {
     super.dispose();
     print('yes');
-    _EmailController?.text;
-    _passwordController?.text;
-    _pinlocationController?.text;
-    _phoneController?.text;
+    _EmailController.dispose();
+    _passwordController.dispose();
+    _pinlocationController.dispose();
+    _phoneController.dispose();
   }
 
   @override
@@ -158,24 +159,8 @@ class _CreateaccState extends State<regacc> {
                             iconname: Icons.location_on_outlined,
                           )),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        child: customTextfield(
-                            keyboardtype: TextInputType.number,
-                            hintstyle: const TextStyle(
-                                fontSize: 20, color: AppColor.colorgrey),
-                            obsecuretext: false,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter Phone Number';
-                              }
-
-                              return null;
-                            },
-                            hintext: "Phone",
-                            controller: _phoneController,
-                            prefixicon: const customIcon(
-                                iconname: Icons.phone_android)),
-                      ),
+                          padding: const EdgeInsets.only(top: 10, bottom: 10),
+                          child: phoneField(context)),
                     ],
                   ),
                 ),
@@ -208,12 +193,14 @@ class _CreateaccState extends State<regacc> {
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 if (_formkey.currentState!.validate()) {
+                  AuthController.pinLoc = _pinlocationController.text.trim();
+
+                  AuthController.signUp(
+                      context,
+                      _EmailController.text.toLowerCase().trim(),
+                      _passwordController.text.trim());
                   setState(() {
                     _formkey.currentState?.reset();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const locations()));
                   });
                 } else {
                   return null;
@@ -227,5 +214,24 @@ class _CreateaccState extends State<regacc> {
               ),
               backgroundColor: Colors.red,
             )));
+  }
+
+  Widget phoneField(context) {
+    return customPhoneField(
+      context,
+   
+      controller: _phoneController,
+      onChanged: (phoneNumber) {
+        AuthController.number =
+            "${phoneNumber.countryCode}${phoneNumber.number}";
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter Phone Number';
+        }
+
+        return null;
+      },
+    );
   }
 }

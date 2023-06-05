@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +9,20 @@ import '../utilis/constants/Colors/colors.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BaseHelper {
-  static hideKeyboard(context) {
+  static hideKeypad(context) {
     FocusScope.of(context).unfocus();
   }
-
+ static Future<bool> checkConnectivity() async {
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+    } on SocketException catch (_) {
+      return false;
+    }
+    return false;
+  }
   static showSnackBar(context, msg, {button}) {
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(msg),
@@ -20,8 +32,11 @@ class BaseHelper {
     ));
   }
 
+  static FirebaseFirestore firestore = FirebaseFirestore.instance;
+  static FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+static late  Map<String, dynamic> userData;
   static Future<File?> imagePickerSheet(context) {
-    hideKeyboard(context);
+    hideKeypad(context);
     late Future<File?> imageVar;
     return showModalBottomSheet(
         context: context,
@@ -41,8 +56,8 @@ class BaseHelper {
                     },
                     horizontalTitleGap: 0,
                     title: const Text('Camera', style: TextStyle(fontSize: 18)),
-                    leading: const Icon(Icons.camera_alt,
-                        color: AppColor.colorred),
+                    leading:
+                        const Icon(Icons.camera_alt, color: AppColor.colorred),
                   ),
                   ListTile(
                     horizontalTitleGap: 0,

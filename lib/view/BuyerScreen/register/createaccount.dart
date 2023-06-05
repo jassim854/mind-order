@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Controllers/auth_controller.dart';
 import 'package:my_order/utilis/components/Customscreen/header.dart';
 import 'package:my_order/utilis/components/customwidgets/customRoundContainer.dart';
 import 'package:my_order/utilis/components/customwidgets/customIcon.dart';
@@ -24,16 +25,16 @@ class Createacc extends StatefulWidget {
 
 class _CreateaccState extends State<Createacc> {
   TextEditingController? _nameController;
-
-  TextEditingController? _LastnameController;
+  TextEditingController? _lastnameController;
   TextEditingController? _addressController;
   TextEditingController? _cityController;
   TextEditingController? _postcodeController;
   TextEditingController? _countryController;
+  @override
   void initState() {
     print('init');
     _nameController = TextEditingController();
-    _LastnameController = TextEditingController();
+    _lastnameController = TextEditingController();
     _addressController = TextEditingController();
     _cityController = TextEditingController();
     _postcodeController = TextEditingController();
@@ -42,11 +43,12 @@ class _CreateaccState extends State<Createacc> {
     super.initState();
   }
 
+  @override
   void dispose() {
     super.dispose();
     print('yes');
     _nameController?.text;
-    _LastnameController?.text;
+    _lastnameController?.text;
     _addressController?.text;
     _cityController?.text;
     _postcodeController?.text;
@@ -138,7 +140,7 @@ class _CreateaccState extends State<Createacc> {
                                         fontSize: 20,
                                         color: AppColor.colorgrey),
                                     hintext: "Last Name",
-                                    controller: _LastnameController,
+                                    controller: _lastnameController,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return 'Enter Last Name';
@@ -279,6 +281,12 @@ class _CreateaccState extends State<Createacc> {
             floatingActionButton: customFloatingButton(
               onpress: () {
                 if (_formkey.currentState!.validate()) {
+                  AuthController.firstName = _nameController?.text.trim();
+                  AuthController.lastName = _lastnameController?.text.trim();
+                  AuthController.addresses = _addressController?.text.trim();
+                  AuthController.city = _cityController?.text.trim();
+                  AuthController.country = _countryController?.text.trim();
+                  AuthController.postCode = _postcodeController?.text.trim();
                   setState(() {
                     _formkey.currentState?.reset();
                     Navigator.pushNamed(context, RoutesName.regacc);

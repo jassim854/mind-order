@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:my_order/Firebase/firebasemethod.dart';
+import 'package:my_order/Helper/basehelper.dart';
 import 'package:my_order/utilis/components/customwidgets/customtextwidget.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
 import 'package:my_order/utilis/constants/Colors/colors.dart';
@@ -17,11 +19,23 @@ class splashscreen extends StatefulWidget {
 class _splashscreenState extends State<splashscreen> {
   @override
   void initState() {
+    if (BaseHelper.firebaseAuth.currentUser != null) {
+      getuserData();
+    }
+
     // TODO: implement initState
     super.initState();
     Timer(const Duration(seconds: 4), () {
-      Navigator.pushNamed(context, RoutesName.usertype);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RoutesName.usertype,
+        (route) => false,
+      );
     });
+  }
+
+  getuserData() async {
+    await FirebaseMethod.getUserData();
   }
 
   @override

@@ -36,13 +36,24 @@ dependencies:
 
   intl: ^0.17.0
   dotted_border: ^2.0.0+2
-  image_picker: ^0.8.5+3
+
   google_fonts: ^3.0.1
   badges: ^2.0.3
+ 
 
+  firebase_storage: ^11.0.14
+  uuid: ^3.0.7
+  image_picker: ^0.8.6+1
+  file_picker: ^5.2.5
+  google_sign_in: ^6.1.2
+  flutter_facebook_auth: ^5.0.7
+  firebase_auth: ^4.2.5
+  flutter_easyloading: ^3.0.3
+  cloud_firestore: ^4.3.1
   simple_star_rating: ^0.0.3
   flutter_rating_bar: ^4.0.1
   firebase_core: ^2.13.0
+  intl_phone_field: ^3.1.0
 
 
 

@@ -417,7 +417,7 @@ class _foodsheduleState extends State<foodshedule> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
                         onPressed: (() {
-                          BaseHelper.hideKeyboard(context);
+                          BaseHelper.hideKeypad(context);
                           showDialog(
                               context: context,
                               builder: ((context) => const newmethod()));
@@ -436,7 +436,7 @@ class _foodsheduleState extends State<foodshedule> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
                         onPressed: (() {
-                          BaseHelper.hideKeyboard(context);
+                          BaseHelper.hideKeypad(context);
                           showDialog(
                               context: context,
                               builder: ((context) => const newmethod()));

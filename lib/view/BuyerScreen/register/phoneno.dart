@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_order/Controllers/auth_controller.dart';
 import 'package:my_order/Helper/basehelper.dart';
 import 'package:my_order/utilis/components/customwidgets/customtextbutton.dart';
 import 'package:my_order/utilis/constants/Appimages/imagesname.dart';
@@ -20,10 +21,24 @@ class phoneno extends StatefulWidget {
 }
 
 class _phonenoState extends State<phoneno> {
+  late TextEditingController _verificationController;
+  @override
+  void initState() {
+    AuthController.verifyPhoneNumber(context);
+    _verificationController = TextEditingController();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _verificationController.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController? _verificationController;
-    var click;
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -84,6 +99,9 @@ class _phonenoState extends State<phoneno> {
                   child: Form(
                     key: _formkey,
                     child: customTextfield(
+                      onEditingComplete: (value) {
+                        AuthController.verifyOtp(context, value);
+                      },
                       textalign: TextAlign.center,
                       hintstyle: const TextStyle(
                           fontSize: 20, color: AppColor.colorgrey),
@@ -100,16 +118,18 @@ class _phonenoState extends State<phoneno> {
                       controller: _verificationController,
                     ),
                   )),
-              Padding(
-                padding: const EdgeInsets.only(),
-                child: Container(
-                    alignment: Alignment.topCenter,
-                    child: customTextButton(
-                      onclick: () {},
-                      title: 'Resend Code',
-                      textcolor: AppColor.headertextcolor,
-                    )),
-              ),
+              AuthController.maxsecond == 0
+                  ? Container(
+                      alignment: Alignment.topCenter,
+                      child: customTextButton(
+                        onclick: () {
+                          AuthController.verifyPhoneNumber(context);
+                          setState(() {});
+                        },
+                        title: 'Resend Code',
+                        textcolor: AppColor.headertextcolor,
+                      ))
+                  : Text(AuthController.maxsecond.toString()),
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 75, right: 75),
                 child: Row(
@@ -121,16 +141,11 @@ class _phonenoState extends State<phoneno> {
                         child: customelevatedbutton(
                           onpress: () {
                             if (_formkey.currentState!.validate()) {
-                              BaseHelper.hideKeyboard(context);
+                              AuthController.verifyOtp(
+                                  context, _verificationController.text.trim());
+                              BaseHelper.hideKeypad(context);
                               setState(() {
                                 // _formkey.currentState?.reset();
-
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context,
-                                    type == 'Buyer'
-                                        ? RoutesName.homescreen
-                                        : RoutesName.stepsleft,
-                                    (route) => false);
                               });
                             } else {
                               print("error");
